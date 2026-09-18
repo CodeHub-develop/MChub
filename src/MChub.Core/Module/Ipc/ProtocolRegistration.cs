@@ -14,8 +14,8 @@ public static class ProtocolRegistration
         chcp 65001 >nul
         reg add "HKEY_CLASSES_ROOT\sl" /f /ve /d "URL:MChub Protocol" || goto :fail
         reg add "HKEY_CLASSES_ROOT\sl" /f /v "URL Protocol" /d "" || goto :fail
-        reg add "HKEY_CLASSES_ROOT\sl\DefaultIcon" /f /ve /d "\"__PORTAL_EXE__\",0" || goto :fail
-        reg add "HKEY_CLASSES_ROOT\sl\shell\open\command" /f /ve /d "\"__PORTAL_EXE__\" \"%%1\"" || goto :fail
+        reg add "HKEY_CLASSES_ROOT\sl\DefaultIcon" /f /ve /d "\"__MCHUB_EXE__\",0" || goto :fail
+        reg add "HKEY_CLASSES_ROOT\sl\shell\open\command" /f /ve /d "\"__MCHUB_EXE__\" \"%%1\"" || goto :fail
         exit /b 0
         :fail
         exit /b 1
@@ -27,7 +27,7 @@ public static class ProtocolRegistration
         Type=Application
         Name=MChub
         Comment=MChub URL protocol handler
-        Exec=__PORTAL_EXE__ %u
+        Exec=__MCHUB_EXE__ %u
         Terminal=false
         NoDisplay=true
         MimeType=x-scheme-handler/sl;
@@ -68,7 +68,7 @@ public static class ProtocolRegistration
     {
         Directory.CreateDirectory(ConfigPath.TempFolderPath);
         var scriptPath = Path.Combine(ConfigPath.TempFolderPath, "RegisterMChubProtocol.bat");
-        await File.WriteAllTextAsync(scriptPath, WindowsScriptTemplate.Replace("__PORTAL_EXE__", executablePath));
+        await File.WriteAllTextAsync(scriptPath, WindowsScriptTemplate.Replace("__MCHUB_EXE__", executablePath));
         Logger.Info(string.Format(LogLanguageManager.Instance.ipc_scriptWritten.CurrentValue(), scriptPath));
 
         Process process;
@@ -105,7 +105,7 @@ public static class ProtocolRegistration
         const string desktopFileName = "hub.code.MChub.url-handler.desktop";
         var desktopFilePath = Path.Combine(applicationsFolder, desktopFileName);
         await File.WriteAllTextAsync(desktopFilePath,
-            LinuxDesktopTemplate.Replace("__PORTAL_EXE__", EscapeDesktopExecArgument(executablePath)) + "\n");
+            LinuxDesktopTemplate.Replace("__MCHUB_EXE__", EscapeDesktopExecArgument(executablePath)) + "\n");
         Logger.Info(string.Format(LogLanguageManager.Instance.ipc_desktopHandlerWritten.CurrentValue(), desktopFilePath));
 
         await RunProcessAsync("xdg-mime", ["default", desktopFileName, "x-scheme-handler/sl"], true);

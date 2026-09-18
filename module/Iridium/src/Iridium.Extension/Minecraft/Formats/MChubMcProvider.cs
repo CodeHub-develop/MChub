@@ -18,7 +18,7 @@ namespace Iridium.Extension.Minecraft.Formats;
 public sealed class MChubMcProvider : IFormatProvider {
     private const int MaxScanConcurrency = 2;
 
-    public string Id => "PortalMc";
+    public string Id => "MChubMc";
 
     public int Priority => 80;
 
@@ -75,7 +75,7 @@ public sealed class MChubMcProvider : IFormatProvider {
     }
 
     private static MinecraftContext Wrap(DirectoryInfo dir, MinecraftEntry entry) => new() {
-        Format = "PortalMc",
+        Format = "MChubMc",
         Layout = new MChubMcLayout(),
         Entry = entry,
     };

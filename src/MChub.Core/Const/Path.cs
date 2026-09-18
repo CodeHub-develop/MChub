@@ -1,4 +1,4 @@
-﻿namespace MChub.Core.Const;
+namespace MChub.Core.Const;
 
 public static class ConfigPath
 {
@@ -15,7 +15,7 @@ public static class ConfigPath
     public static string BedrockDataRootPath => Path.Combine(UserDataRootPath, "Bedrock");
     public static string JavaRuntimesPath => Path.Combine(UserDataRootPath, "Runtimes", "Java");
 
-    public static string SettingDataPath => Path.Combine(UserDataRootPath, "Setting.portal");
-    public static string AppPathDataPath => Path.Combine(UserDataRootPath, "AppPath.portal");
-    public static string DebugConsoleDataPath => Path.Combine(UserDataRootPath, "DebugConsole.portal");
+    public static string SettingDataPath => Path.Combine(UserDataRootPath, "Setting.mchub");
+    public static string AppPathDataPath => Path.Combine(UserDataRootPath, "AppPath.mchub");
+    public static string DebugConsoleDataPath => Path.Combine(UserDataRootPath, "DebugConsole.mchub");
 }

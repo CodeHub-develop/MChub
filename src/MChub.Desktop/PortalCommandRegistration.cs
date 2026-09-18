@@ -8,7 +8,7 @@ namespace MChub.Desktop;
 
 internal static class MChubCommandRegistration
 {
-    public const string CommandName = "portal";
+    public const string CommandName = "mchub";
 
     private const string WindowsCmdTemplate =
         """
@@ -26,18 +26,18 @@ internal static class MChubCommandRegistration
         if /I "%1"=="-h" goto :headless
         if /I "%1"=="/?" goto :headless
         if /I "%1"=="-?" goto :headless
-        "__PORTAL_EXE__" %*
+        "__MCHUB_EXE__" %*
         exit /b 0
         :headless
         chcp 65001 >nul
-        powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0portal.ps1" %*
+        powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0mchub.ps1" %*
         exit /b %errorlevel%
         """;
 
     private const string WindowsPsTemplate =
         """
         try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch {}
-        $exe = '__PORTAL_EXE__'
+        $exe = '__MCHUB_EXE__'
         $argLine = ($args | ForEach-Object {
             if ($_ -match '[\s"]') { '"' + ($_ -replace '"', '\"') + '"' } else { $_ }
         }) -join ' '
@@ -48,7 +48,7 @@ internal static class MChubCommandRegistration
     private const string UnixShTemplate =
         """
         #!/bin/sh
-        exec "__PORTAL_EXE__" "$@"
+        exec "__MCHUB_EXE__" "$@"
         """;
 
     public static async Task RegisterAsync()
@@ -75,10 +75,10 @@ internal static class MChubCommandRegistration
             var binDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "MChub", "bin");
             Directory.CreateDirectory(binDir);
-            await File.WriteAllTextAsync(Path.Combine(binDir, "portal.cmd"),
-                WindowsCmdTemplate.Replace("__PORTAL_EXE__", executablePath), new UTF8Encoding(false));
-            await File.WriteAllTextAsync(Path.Combine(binDir, "portal.ps1"),
-                WindowsPsTemplate.Replace("__PORTAL_EXE__", executablePath.Replace("'", "''")), new UTF8Encoding(true));
+            await File.WriteAllTextAsync(Path.Combine(binDir, "mchub.cmd"),
+                WindowsCmdTemplate.Replace("__MCHUB_EXE__", executablePath), new UTF8Encoding(false));
+            await File.WriteAllTextAsync(Path.Combine(binDir, "mchub.ps1"),
+                WindowsPsTemplate.Replace("__MCHUB_EXE__", executablePath.Replace("'", "''")), new UTF8Encoding(true));
             EnsureUserPath(binDir);
 #if WINDOWS
             RegisterAppPaths(executablePath);
@@ -90,7 +90,7 @@ internal static class MChubCommandRegistration
             Directory.CreateDirectory(binDir);
             var shimPath = Path.Combine(binDir, CommandName);
             await File.WriteAllTextAsync(shimPath,
-                UnixShTemplate.Replace("__PORTAL_EXE__", EscapeShellArgument(executablePath)),
+                UnixShTemplate.Replace("__MCHUB_EXE__", EscapeShellArgument(executablePath)),
                 new UTF8Encoding(false));
             MakeExecutable(shimPath);
             EnsureUnixPath(binDir);
@@ -122,7 +122,7 @@ internal static class MChubCommandRegistration
         try
         {
             Directory.CreateDirectory(systemBin);
-            var probe = Path.Combine(systemBin, $".portal-write-test-{Guid.NewGuid():N}");
+            var probe = Path.Combine(systemBin, $".mchub-write-test-{Guid.NewGuid():N}");
             File.WriteAllText(probe, string.Empty);
             File.Delete(probe);
             return systemBin;
@@ -199,7 +199,7 @@ internal static class MChubCommandRegistration
         try
         {
             using var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(
-                @"Software\Microsoft\Windows\CurrentVersion\App Paths\portal.exe");
+                @"Software\Microsoft\Windows\CurrentVersion\App Paths\mchub.exe");
             key?.SetValue("", executablePath);
         }
         catch (Exception exception)

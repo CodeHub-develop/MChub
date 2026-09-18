@@ -10,7 +10,7 @@ namespace Iridium.Extension.Minecraft.Layout;
 /// with game files directly inside the instance directory.
 /// </summary>
 public sealed class MChubMcLayout : SharedMetadataLayout {
-    public override string Format => "PortalMc";
+    public override string Format => "MChubMc";
 
     protected override string InstanceFolder => "instances";
 
