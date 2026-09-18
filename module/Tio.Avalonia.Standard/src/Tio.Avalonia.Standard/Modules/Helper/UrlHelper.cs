@@ -1,6 +1,6 @@
 using System;
 
-namespace SulfurLauncher.Core.Helpers;
+namespace MChub.Core.Helpers;
 
 public static class UrlHelper
 {

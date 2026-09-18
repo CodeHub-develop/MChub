@@ -1,20 +1,20 @@
 # 命令行与 sl:// 协议
 
-SulfurLauncher 支持通过命令行参数或 `sl://` 链接调用启动器内的安装与启动功能。两种入口的参数一一对应，解析后执行的是同一套逻辑。
+MChub 支持通过命令行参数或 `sl://` 链接调用启动器内的安装与启动功能。两种入口的参数一一对应，解析后执行的是同一套逻辑。
 
-如果 SulfurLauncher 已在运行，命令会转发给正在运行的实例执行；否则会先启动 SulfurLauncher，界面加载完成后再执行。安装进度显示在任务抽屉中，完成或失败会弹出通知。
+如果 MChub 已在运行，命令会转发给正在运行的实例执行；否则会先启动 MChub，界面加载完成后再执行。安装进度显示在任务抽屉中，完成或失败会弹出通知。
 
 ## 命令行
 
-可执行文件为 `SulfurLauncher.Desktop.exe`（Linux / macOS 为对应平台的可执行文件）。
+可执行文件为 `MChub.Desktop.exe`（Linux / macOS 为对应平台的可执行文件）。
 
 ```
-SulfurLauncher.Desktop.exe install vanilla <版本> [--folder <文件夹>] [--id <实例ID>]
-SulfurLauncher.Desktop.exe install loader <版本> --loader <加载器[@版本]> [--loader ...] [--folder <文件夹>] [--id <实例ID>]
-SulfurLauncher.Desktop.exe install modpack <来源> [--from modrinth|curseforge] [--version <版本或fileId>] [--folder <文件夹>] [--id <实例ID>]
-SulfurLauncher.Desktop.exe launch <实例ID> [--folder <文件夹>] [--world <世界文件夹>]
-SulfurLauncher.Desktop.exe launch <实例ID> [--folder <文件夹>] [--server <服务器地址>] [--port <端口>]
-SulfurLauncher.Desktop.exe help
+MChub.Desktop.exe install vanilla <版本> [--folder <文件夹>] [--id <实例ID>]
+MChub.Desktop.exe install loader <版本> --loader <加载器[@版本]> [--loader ...] [--folder <文件夹>] [--id <实例ID>]
+MChub.Desktop.exe install modpack <来源> [--from modrinth|curseforge] [--version <版本或fileId>] [--folder <文件夹>] [--id <实例ID>]
+MChub.Desktop.exe launch <实例ID> [--folder <文件夹>] [--world <世界文件夹>]
+MChub.Desktop.exe launch <实例ID> [--folder <文件夹>] [--server <服务器地址>] [--port <端口>]
+MChub.Desktop.exe help
 ```
 
 `install` 也可写作 `download`，两者等价。
@@ -23,41 +23,41 @@ SulfurLauncher.Desktop.exe help
 
 ```powershell
 # 安装原版
-SulfurLauncher.Desktop.exe install vanilla 1.21.8
+MChub.Desktop.exe install vanilla 1.21.8
 
 # 安装原版并附带最新版 Fabric
-SulfurLauncher.Desktop.exe install loader 1.21.8 --loader fabric
+MChub.Desktop.exe install loader 1.21.8 --loader fabric
 
 # 安装指定版本的 Forge，并自定义实例 ID 和目标文件夹
-SulfurLauncher.Desktop.exe install loader 1.20.1 --loader forge@47.2.0 --folder "D:\Minecraft\.minecraft" --id "1.20.1-forge"
+MChub.Desktop.exe install loader 1.20.1 --loader forge@47.2.0 --folder "D:\Minecraft\.minecraft" --id "1.20.1-forge"
 
 # 从本地文件安装整合包
-SulfurLauncher.Desktop.exe install modpack "D:\packs\pack.mrpack"
+MChub.Desktop.exe install modpack "D:\packs\pack.mrpack"
 
 # 从直链安装整合包
-SulfurLauncher.Desktop.exe install modpack "https://cdn.modrinth.com/data/1KVo5zza/versions/cZY3Bvs9/Fabulously.Optimized-v14.0.0-beta.2.mrpack"
+MChub.Desktop.exe install modpack "https://cdn.modrinth.com/data/1KVo5zza/versions/cZY3Bvs9/Fabulously.Optimized-v14.0.0-beta.2.mrpack"
 
 # 按名称搜索并安装最新版本（自动在 Modrinth / CurseForge 查找）
-SulfurLauncher.Desktop.exe install modpack "Fabulously Optimized"
+MChub.Desktop.exe install modpack "Fabulously Optimized"
 
 # 按项目 ID 安装，并指定版本
-SulfurLauncher.Desktop.exe install modpack fabulously-optimized --from modrinth --version 14.0.0-beta.2
-SulfurLauncher.Desktop.exe install modpack 715572 --from curseforge --file 6985843
+MChub.Desktop.exe install modpack fabulously-optimized --from modrinth --version 14.0.0-beta.2
+MChub.Desktop.exe install modpack 715572 --from curseforge --file 6985843
 
 # 启动实例
-SulfurLauncher.Desktop.exe launch "1.20.1-forge"
-SulfurLauncher.Desktop.exe launch "1.20.1-forge" --folder "D:\Minecraft\.minecraft"
+MChub.Desktop.exe launch "1.20.1-forge"
+MChub.Desktop.exe launch "1.20.1-forge" --folder "D:\Minecraft\.minecraft"
 
 # 启动并直接进入某个世界（传世界在 saves 目录下的文件夹名；版本隔离下同名世界可重复，以文件夹名区分）
-SulfurLauncher.Desktop.exe launch "1.20.1-forge" --folder "D:\Minecraft\.minecraft" --world "New World"
+MChub.Desktop.exe launch "1.20.1-forge" --folder "D:\Minecraft\.minecraft" --world "New World"
 
 # 启动并直接进入服务器（--port 缺省为 25565）
-SulfurLauncher.Desktop.exe launch "1.20.1-forge" --folder "D:\Minecraft\.minecraft" --server "play.example.com" --port 25565
+MChub.Desktop.exe launch "1.20.1-forge" --folder "D:\Minecraft\.minecraft" --server "play.example.com" --port 25565
 ```
 
 ## 浏览器命令
 
-在设置 → 其他设置 → SulfurLauncher 协议中注册协议后，浏览器地址栏或网页链接可以直接调起启动器。macOS 版无需注册，协议已在应用包中声明；Linux 通过包管理器或 AppImage 桌面集成安装时也会自动注册。
+在设置 → 其他设置 → MChub 协议中注册协议后，浏览器地址栏或网页链接可以直接调起启动器。macOS 版无需注册，协议已在应用包中声明；Linux 通过包管理器或 AppImage 桌面集成安装时也会自动注册。
 
 与上面命令行等价的链接：
 

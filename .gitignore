@@ -469,5 +469,5 @@ LAUNCH-VERIFY.log
 
 # ===== 发布会产生的临时目录 =====
 dist/
-SulfurLauncher.Release/
+MChub.Release/
 

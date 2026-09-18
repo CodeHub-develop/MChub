@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "SulfurBlockLauncher.Web/**"
+      - "MChub.Web/**"
   workflow_dispatch:
 
 jobs:
@@ -22,14 +22,14 @@ jobs:
 
       - name: Prepare for GitHub Pages
         run: |
-          cd SulfurBlockLauncher.Web/wwwroot
+          cd MChub.Web/wwwroot
           touch .nojekyll
           cp index.html 404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: SulfurBlockLauncher.Web/wwwroot
+          path: MChub.Web/wwwroot
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -2,20 +2,20 @@
   <Folder Name="/Module/">
     <Project Path="module/Tio.Avalonia.Standard/src/Tio.Avalonia.Standard.Tab/Tio.Avalonia.Standard.Tab.csproj" />
     <Project Path="module/Tio.Avalonia.Standard/src/Tio.Avalonia.Standard/Tio.Avalonia.Standard.csproj" />
-    <Project Path="src/SulfurLauncher.LitematicaViewer/LitematicaViewer.csproj" />
+    <Project Path="src/MChub.LitematicaViewer/LitematicaViewer.csproj" />
   </Folder>
   <Folder Name="/Module/Bedrock/">
-    <Project Path="src/SulfurLauncher.Bedrock.Bootstrap/SulfurLauncher.Bedrock.Bootstrap.vcxproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.Core/SulfurLauncher.Bedrock.Core.csproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.Core.Windows/SulfurLauncher.Bedrock.Core.Windows.csproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.Hook/SulfurLauncher.Bedrock.Hook.csproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.Injector/SulfurLauncher.Bedrock.Injector.vcxproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.Linux/SulfurLauncher.Bedrock.Linux.csproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.PeNet/src/PeNet/SulfurLauncher.Bedrock.PeNet.csproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.Preload/SulfurLauncher.Bedrock.Preload.csproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.Standard/SulfurLauncher.Bedrock.Standard.csproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.Windows/SulfurLauncher.Bedrock.Windows.csproj" />
-    <Project Path="src/SulfurLauncher.Bedrock.Xbox/SulfurLauncher.Bedrock.Xbox.csproj" />
+    <Project Path="src/MChub.Bedrock.Bootstrap/MChub.Bedrock.Bootstrap.vcxproj" />
+    <Project Path="src/MChub.Bedrock.Core/MChub.Bedrock.Core.csproj" />
+    <Project Path="src/MChub.Bedrock.Core.Windows/MChub.Bedrock.Core.Windows.csproj" />
+    <Project Path="src/MChub.Bedrock.Hook/MChub.Bedrock.Hook.csproj" />
+    <Project Path="src/MChub.Bedrock.Injector/MChub.Bedrock.Injector.vcxproj" />
+    <Project Path="src/MChub.Bedrock.Linux/MChub.Bedrock.Linux.csproj" />
+    <Project Path="src/MChub.Bedrock.PeNet/src/PeNet/MChub.Bedrock.PeNet.csproj" />
+    <Project Path="src/MChub.Bedrock.Preload/MChub.Bedrock.Preload.csproj" />
+    <Project Path="src/MChub.Bedrock.Standard/MChub.Bedrock.Standard.csproj" />
+    <Project Path="src/MChub.Bedrock.Windows/MChub.Bedrock.Windows.csproj" />
+    <Project Path="src/MChub.Bedrock.Xbox/MChub.Bedrock.Xbox.csproj" />
   </Folder>
   <Folder Name="/Module/Iridium/">
     <Project Path="module/Iridium/src/Iridium.Extension/Iridium.Extension.csproj" />
@@ -42,9 +42,9 @@
     <File Path="src/Directory.Build.props" />
     <File Path="src/Directory.Packages.props" />
   </Folder>
-  <Project Path="src/SulfurLauncher.Console/SulfurLauncher.Console.csproj" />
-  <Project Path="src/SulfurLauncher.Core/SulfurLauncher.Core.csproj" />
-  <Project Path="src/SulfurLauncher.Desktop/SulfurLauncher.Desktop.csproj" />
-  <Project Path="src/SulfurLauncher.Localization/SulfurLauncher.Localization.csproj" />
-  <Project Path="src/SulfurLauncher/SulfurLauncher.csproj" />
+  <Project Path="src/MChub.Console/MChub.Console.csproj" />
+  <Project Path="src/MChub.Core/MChub.Core.csproj" />
+  <Project Path="src/MChub.Desktop/MChub.Desktop.csproj" />
+  <Project Path="src/MChub.Localization/MChub.Localization.csproj" />
+  <Project Path="src/MChub/MChub.csproj" />
 </Solution>

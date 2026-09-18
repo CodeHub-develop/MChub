@@ -14,12 +14,12 @@
 ### 关键命令
 ```bash
 pkgbuild \
-  --root "./src/SulfurLauncher.Desktop/bin/Release/net10.0/${{ matrix.rid }}/publish/SulfurLauncher.app" \
-  --install-location "/Applications/SulfurLauncher.app" \
-  --identifier "cc.tiouo.SulfurLauncher" \
+  --root "./src/MChub.Desktop/bin/Release/net10.0/${{ matrix.rid }}/publish/MChub.app" \
+  --install-location "/Applications/MChub.app" \
+  --identifier "hub.code.MChub" \
   --version "${{ needs.prepare.outputs.app_version }}" \
   --timestamp \
-  "SulfurLauncher.osx.mac.${{ matrix.dmg_arch }}.pkg"
+  "MChub.osx.mac.${{ matrix.dmg_arch }}.pkg"
 ```
 
 ## 需要修改的文件

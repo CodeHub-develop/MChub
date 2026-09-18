@@ -1,38 +1,38 @@
 <p align="center">
-  <a href="https://x-coder-ocs.github.io/SulfurBlockLauncher/">
-    <img src="assets/top.png" alt="赞助 SulfurLauncher">
+  <a href="https://codehub-develop.github.io/MChub/">
+    <img src="assets/top.png" alt="赞助 MChub">
   </a>
-  <a href="https://x-coder-ocs.github.io/SulfurBlockLauncher/">
-    <img src="assets/header.png" alt="SulfurLauncher">
+  <a href="https://codehub-develop.github.io/MChub/">
+    <img src="assets/header.png" alt="MChub">
   </a>
 </p>
 
 <p align="start">
-  <a href="https://github.com/X-CODER-ocs/SulfurBlockLauncher/actions/workflows/publish-commit.yml"><img src="https://img.shields.io/github/actions/workflow/status/X-CODER-ocs/SulfurBlockLauncher/publish-commit.yml?branch=main&label=%E6%9E%84%E5%BB%BA&logo=github&style=for-the-badge" alt="构建状态"></a>
-  <a href="https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases"><img src="https://img.shields.io/github/v/release/X-CODER-ocs/SulfurBlockLauncher?display_name=tag&label=%E5%8F%91%E5%B8%83&logo=github&logoColor=white&color=ff007f&style=for-the-badge" alt="最新发布"></a>
-  <a href="https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases"><img src="https://img.shields.io/github/v/release/X-CODER-ocs/SulfurBlockLauncher?include_prereleases&display_name=tag&label=%E9%A2%84%E5%8F%91%E5%B8%83&logo=github&logoColor=white&color=9c27b0&style=for-the-badge" alt="预发布"></a>  
-  <a href="https://github.com/X-CODER-ocs/SulfurBlockLauncher/stargazers"><img src="https://img.shields.io/github/stars/X-CODER-ocs/SulfurBlockLauncher?label=%E6%98%9F%E6%A0%87&logo=github&logoColor=white&color=eac54f&style=for-the-badge" alt="星标"></a>
-  <a href="https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases"><img src="https://img.shields.io/github/downloads/X-CODER-ocs/SulfurBlockLauncher/total?label=%E4%B8%8B%E8%BD%BD%E9%87%8F&logo=github&logoColor=white&color=388bfd&style=for-the-badge" alt="下载量"></a>
+  <a href="https://github.com/CodeHub-develop/MChub/actions/workflows/publish-commit.yml"><img src="https://img.shields.io/github/actions/workflow/status/CodeHub-develop/MChub/publish-commit.yml?branch=main&label=%E6%9E%84%E5%BB%BA&logo=github&style=for-the-badge" alt="构建状态"></a>
+  <a href="https://github.com/CodeHub-develop/MChub/releases"><img src="https://img.shields.io/github/v/release/CodeHub-develop/MChub?display_name=tag&label=%E5%8F%91%E5%B8%83&logo=github&logoColor=white&color=ff007f&style=for-the-badge" alt="最新发布"></a>
+  <a href="https://github.com/CodeHub-develop/MChub/releases"><img src="https://img.shields.io/github/v/release/CodeHub-develop/MChub?include_prereleases&display_name=tag&label=%E9%A2%84%E5%8F%91%E5%B8%83&logo=github&logoColor=white&color=9c27b0&style=for-the-badge" alt="预发布"></a>  
+  <a href="https://github.com/CodeHub-develop/MChub/stargazers"><img src="https://img.shields.io/github/stars/CodeHub-develop/MChub?label=%E6%98%9F%E6%A0%87&logo=github&logoColor=white&color=eac54f&style=for-the-badge" alt="星标"></a>
+  <a href="https://github.com/CodeHub-develop/MChub/releases"><img src="https://img.shields.io/github/downloads/CodeHub-develop/MChub/total?label=%E4%B8%8B%E8%BD%BD%E9%87%8F&logo=github&logoColor=white&color=388bfd&style=for-the-badge" alt="下载量"></a>
   <img src="https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-GPL--3.0--or--later-9d4edd?logoColor=white&style=for-the-badge" alt="许可证">
-  <a href="[https://x-coder-ocs.github.io/SulfurBlockLauncher/](https://x-coder-ocs.github.io/SulfurBlockLauncher/)"><img src="https://img.shields.io/static/v1?label=%E5%AE%98%E7%BD%91&message=https://x-coder-ocs.github.io/SulfurBlockLauncher/&color=38ce8f&logo=globe&logoColor=white&style=for-the-badge" alt="官网"></a>
+  <a href="[https://codehub-develop.github.io/MChub/](https://codehub-develop.github.io/MChub/)"><img src="https://img.shields.io/static/v1?label=%E5%AE%98%E7%BD%91&message=https://codehub-develop.github.io/MChub/&color=38ce8f&logo=globe&logoColor=white&style=for-the-badge" alt="官网"></a>
 </p>
 
 ---
 
 ## 少一点配置，多一点游戏
 
-<a href="https://x-coder-ocs.github.io/SulfurBlockLauncher/">SulfurLauncher</a> 是一款开源、跨平台的 Minecraft 启动器与实例管理器，同时支持 Java 版和基岩版，提供从游戏安装、账户登录到资源查找与文件整理的一体化体验，并对不同版本、整合包和世界进行独立管理
+<a href="https://codehub-develop.github.io/MChub/">MChub</a> 是一款开源、跨平台的 Minecraft 启动器与实例管理器，同时支持 Java 版和基岩版，提供从游戏安装、账户登录到资源查找与文件整理的一体化体验，并对不同版本、整合包和世界进行独立管理
 
-## 下载 SulfurLauncher
+## 下载 MChub
 
-从 [Releases](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases) 下载对应平台的最新版本：
+从 [Releases](https://github.com/CodeHub-develop/MChub/releases) 下载对应平台的最新版本：
 
 | 平台                    | 正式版                                                                                                            | commit 版本                                                                                                        | nightly 版本                                                                                                       |
 | ----------------------- |------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| **Windows 10 / 11 x64** | [安装程序](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/latest/download/SulfurLauncher.win.x64.installer.zip) / [便携版](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/latest/download/SulfurLauncher.win.x64.portable.zip) | [安装程序](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-commit/SulfurLauncher.win.x64.installer.zip) / [便携版](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-commit/SulfurLauncher.win.x64.portable.zip) | [安装程序](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-nightly/SulfurLauncher.win.x64.installer.zip) / [便携版](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-nightly/SulfurLauncher.win.x64.portable.zip) |
-| **macOS Apple Silicon** | [磁盘映像](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/latest/download/SulfurLauncher.osx.mac.arm64.dmg) / [应用包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/latest/download/SulfurLauncher.osx.mac.arm64.app.zip) | [磁盘映像](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-commit/SulfurLauncher.osx.mac.arm64.dmg) / [应用包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-commit/SulfurLauncher.osx.mac.arm64.app.zip) | [磁盘映像](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-nightly/SulfurLauncher.osx.mac.arm64.dmg) / [应用包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-nightly/SulfurLauncher.osx.mac.arm64.app.zip) |
-| **macOS Intel**         | [磁盘映像](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/latest/download/SulfurLauncher.osx.mac.x64.dmg) / [应用包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/latest/download/SulfurLauncher.osx.mac.x64.app.zip) | [磁盘映像](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-commit/SulfurLauncher.osx.mac.x64.dmg) / [应用包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-commit/SulfurLauncher.osx.mac.x64.app.zip) | [磁盘映像](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-nightly/SulfurLauncher.osx.mac.x64.dmg) / [应用包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-nightly/SulfurLauncher.osx.mac.x64.app.zip) |
-| **Linux x64**           | [AppImage](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/latest/download/SulfurLauncher.linux.x64.AppImage) / [deb包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/latest/download/SulfurLauncher.linux.x64.deb) / [rpm包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/latest/download/SulfurLauncher.linux.x64.rpm) | [AppImage](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-commit/SulfurLauncher.linux.x64.AppImage) / [deb包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-commit/SulfurLauncher.linux.x64.deb) / [rpm包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-commit/SulfurLauncher.linux.x64.rpm) | [AppImage](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-nightly/SulfurLauncher.linux.x64.AppImage) / [deb包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-nightly/SulfurLauncher.linux.x64.deb) / [rpm包](https://github.com/X-CODER-ocs/SulfurBlockLauncher/releases/download/publish-nightly/SulfurLauncher.linux.x64.rpm) |
+| **Windows 10 / 11 x64** | [安装程序](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.win.x64.installer.zip) / [便携版](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.win.x64.portable.zip) | [安装程序](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.win.x64.installer.zip) / [便携版](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.win.x64.portable.zip) | [安装程序](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.win.x64.installer.zip) / [便携版](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.win.x64.portable.zip) |
+| **macOS Apple Silicon** | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.osx.mac.arm64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.osx.mac.arm64.app.zip) | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.osx.mac.arm64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.osx.mac.arm64.app.zip) | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.osx.mac.arm64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.osx.mac.arm64.app.zip) |
+| **macOS Intel**         | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.osx.mac.x64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.osx.mac.x64.app.zip) | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.osx.mac.x64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.osx.mac.x64.app.zip) | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.osx.mac.x64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.osx.mac.x64.app.zip) |
+| **Linux x64**           | [AppImage](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.linux.x64.AppImage) / [deb包](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.linux.x64.deb) / [rpm包](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.linux.x64.rpm) | [AppImage](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.linux.x64.AppImage) / [deb包](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.linux.x64.deb) / [rpm包](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.linux.x64.rpm) | [AppImage](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.linux.x64.AppImage) / [deb包](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.linux.x64.deb) / [rpm包](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.linux.x64.rpm) |
 | **Arch Linux / AUR**    | [portal-mc-bin](https://aur.archlinux.org/packages/portal-mc-bin)                                    | [portal-mc-commit-bin](https://aur.archlinux.org/packages/portal-mc-commit-bin)                                    | [portal-mc-nightly-bin](https://aur.archlinux.org/packages/portal-mc-nightly-bin)                                    |
 
 > [!NOTE]
@@ -44,9 +44,9 @@
 > yay -S portal-mc-nightly-bin          # nightly 版本
 > ```
 >
-> MacOS 首次打开 SulfurLauncher 前，请先将 `SulfurLauncher.app` 移动到“应用程序”文件夹，然后在终端运行以下命令：
+> MacOS 首次打开 MChub 前，请先将 `MChub.app` 移动到“应用程序”文件夹，然后在终端运行以下命令：
 > ```bash
-> sudo xattr -rd com.apple.quarantine /Applications/SulfurLauncher.app
+> sudo xattr -rd com.apple.quarantine /Applications/MChub.app
 > ```
 
 ## 功能
@@ -104,14 +104,14 @@ npm run dev
 
 ## 致谢
 
-SulfurLauncher 建立在许多优秀的 [开源项目](src/SulfurLauncher/Classes/OpenSourceProjects.cs) 之上
+MChub 建立在许多优秀的 [开源项目](src/MChub/Classes/OpenSourceProjects.cs) 之上
 
 > [!NOTE]
 > 项目中使用的部分开源库进行了二次修改：
 > - **MinecraftLaunch**：[Blessing-Studio/MinecraftLaunch](https://github.com/Blessing-Studio/MinecraftLaunch) → [tiouoo/MinecraftLaunch](https://github.com/tiouoo/MinecraftLaunch)
 > - **LiteSkinViewer**：[Ktn429/LiteSkinViewer](https://github.com/Ktn429/LiteSkinViewer) → [tiouoo/LiteSkinViewer](https://github.com/tiouoo/LiteSkinViewer)
 
-在交互设计、功能取舍与跨平台体验的探索中，SulfurLauncher 也从下列开源项目的实践中获得了许多启发。感谢所有维护者与贡献者持续丰富 Minecraft 启动器生态；SulfurLauncher 以独立的产品定位、架构与实现持续开发。
+在交互设计、功能取舍与跨平台体验的探索中，MChub 也从下列开源项目的实践中获得了许多启发。感谢所有维护者与贡献者持续丰富 Minecraft 启动器生态；MChub 以独立的产品定位、架构与实现持续开发。
 
 - [BedrockBoot](https://github.com/Round-Studio/BedrockBoot)：基岩版相关功能
 - [LauncherX](https://github.com/Corona-Studio/LXIT)：部分外观设计与功能
