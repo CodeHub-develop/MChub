@@ -37,6 +37,7 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm"/>
+        <PackageReference Include="FluentAvaloniaUI"/>
         <PackageReference Include="HotAvalonia" Condition="'$(Configuration)' == 'Debug'"/>
         <PackageReference Include="Irihi.Lingua"/>
         <PackageReference Include="SkiaSharp"/>
