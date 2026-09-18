@@ -1,0 +1,36 @@
+name: 发布官网
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "SulfurBlockLauncher.Web/**"
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Prepare for GitHub Pages
+        run: |
+          cd SulfurBlockLauncher.Web/wwwroot
+          touch .nojekyll
+          cp index.html 404.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: SulfurBlockLauncher.Web/wwwroot
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
