@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Tio.Avalonia.Standard.Tab.Interface;
 using TioUi.Common.Extensions;
+using TioUi.Controls;
 
 namespace Tio.Avalonia.Standard.Tab.Extensions;
 
