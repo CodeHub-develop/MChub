@@ -5,6 +5,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Styling;
 using Avalonia.Threading;
 using MChub.Core.Const;
 using MChub.Core.Minecraft;
@@ -18,6 +19,7 @@ using MChub.Views;
 using MChub.Views.Pages;
 using MChub.Views.Pages.DownloadPages;
 using Tio.Avalonia.Standard.Modules.DiskIO;
+using TioUi.Shared;
 
 namespace MChub;
 
@@ -55,7 +57,25 @@ public partial class App : Application
             Initializer.BedrockPackageImport();
         _ = SendStartupTelemetryAsync();
         AvaloniaXamlLoader.Load(this);
+        ApplyThemeVariant(Data.ConfigEntry.Theme);
+        Data.ConfigEntry.PropertyChanged += (_, e) =>
+        {
+            if (e.PropertyName == nameof(Data.ConfigEntry.Theme))
+                ApplyThemeVariant(Data.ConfigEntry.Theme);
+        };
         Logger.Info(LogLanguageManager.Instance.app_initComplete.CurrentValue());
+    }
+
+    private static void ApplyThemeVariant(Theme theme)
+    {
+        if (Current is not { } app) return;
+        app.RequestedThemeVariant = theme switch
+        {
+            Theme.Light => ThemeVariant.Light,
+            Theme.Dark => ThemeVariant.Dark,
+            Theme.Mirage => ThemeVariant.Dark,
+            _ => ThemeVariant.Default
+        };
     }
 
     private static async Task SendStartupTelemetryAsync()

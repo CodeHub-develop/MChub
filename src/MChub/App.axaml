@@ -3,6 +3,7 @@
     RequestedThemeVariant="Default"
     x:Class="MChub.App"
     xmlns="https://github.com/avaloniaui"
+    xmlns:fluentAvalonia="using:FluentAvalonia"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:loc="using:MChub.Localization">
     <Application.Resources>
@@ -26,6 +27,7 @@
         <Style Selector="Popup">
             <Setter Property="InheritsTransform" Value="True" />
         </Style>
+        <fluentAvalonia:FluentAvaloniaTheme PreferredTheme="System" />
     </Application.Styles>
     <NativeMenu.Menu>
         <NativeMenu>
