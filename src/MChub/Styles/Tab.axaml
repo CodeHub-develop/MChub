@@ -1,4 +1,4 @@
-﻿<Styles
+<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -16,6 +16,10 @@
             <Setter Property="Opacity" Value="0" />
         </Style>
     </Style>
+    <Style Selector="tio|SelectionListItem Border#TabAccentBar">
+        <Setter Property="IsVisible" Value="False" />
+        <Setter Property="Opacity" Value="0" />
+    </Style>
     <Style Selector="tio|SelectionListItem:pointerover Border#ItemRoot">
         <Setter Property="Background" Value="{DynamicResource TabHover}" />
         <Style Selector="^ Button#CloseButton">
@@ -25,6 +29,10 @@
     <Style Selector="tio|SelectionListItem:selected Border#ItemRoot">
         <Setter Property="Background" Value="{DynamicResource TabSelected}" />
         <Style Selector="^ Button#CloseButton">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+        <Style Selector="^ Border#TabAccentBar">
+            <Setter Property="IsVisible" Value="True" />
             <Setter Property="Opacity" Value="1" />
         </Style>
     </Style>

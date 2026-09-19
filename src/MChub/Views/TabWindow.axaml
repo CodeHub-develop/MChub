@@ -160,25 +160,23 @@
                         <tio:SelectionList.ItemTemplate>
                             <DataTemplate DataType="entries:TabEntry">
                                 <Border
-                                    BorderBrush="{DynamicResource PanelBackgroundColor}"
                                     BorderThickness="0"
                                     Classes="tab-root"
-                                    CornerRadius="10"
+                                    CornerRadius="8"
                                     Height="30"
-                                    Margin="3,1,3,0"
+                                    Margin="2,1,2,0"
                                     MinWidth="{Binding MinWidth}"
                                     Name="ItemRoot"
                                     PointerPressed="OnPointerPressed"
                                     Tag="{Binding}">
-                                    <Panel
-                                        HorizontalAlignment="Stretch"
-                                        Margin="9,0,10,0"
-                                        VerticalAlignment="Stretch">
-                                        <DockPanel VerticalAlignment="Stretch">
+                                    <Panel>
+                                        <StackPanel
+                                            Margin="10,0,8,0"
+                                            Orientation="Horizontal"
+                                            Spacing="5"
+                                            VerticalAlignment="Center">
                                             <Panel
-                                                DockPanel.Dock="Left"
                                                 Height="{Binding IconHeight}"
-                                                HorizontalAlignment="Left"
                                                 IsVisible="{Binding IsIconVisible}"
                                                 Margin="{Binding IconMargin}"
                                                 VerticalAlignment="Center"
@@ -204,46 +202,50 @@
                                                     <DataTemplate DataType="{x:Type sys:String}">
                                                         <TextBlock
                                                             FontSize="13"
-                                                            Margin="2,0,25,0"
+                                                            Margin="0,0,20,0"
                                                             Text="{Binding}"
                                                             VerticalAlignment="Center" />
                                                     </DataTemplate>
                                                 </ContentControl.ContentTemplate>
                                             </ContentControl>
-                                        </DockPanel>
-                                        <Grid
+                                        </StackPanel>
+                                        <Button
+                                            Background="Transparent"
+                                            Command="{Binding Close}"
+                                            Height="26"
                                             HorizontalAlignment="Right"
                                             IsVisible="{Binding IsCloseable}"
-                                            Margin="0,0,-4,0">
-                                            <Button
-                                                Background="Transparent"
-                                                Command="{Binding Close}"
-                                                Height="28"
-                                                HorizontalAlignment="Right"
-                                                Margin="20,0,3,0"
-                                                MaxHeight="14"
-                                                MaxWidth="16"
-                                                MinHeight="14"
-                                                Name="CloseButton"
-                                                Theme="{StaticResource TransparentButton}"
-                                                ToolTip.ShowDelay="900"
-                                                ToolTip.Tip="{Translate {x:Static loc:AppLanguageManager+Keys.app_tooltips_closeTab}}"
-                                                VerticalAlignment="Center"
-                                                Width="20">
-                                                <Button.Transitions>
-                                                    <Transitions>
-                                                        <DoubleTransition Duration="0:0:0.07" Property="Opacity" />
-                                                    </Transitions>
-                                                </Button.Transitions>
-                                                <TextBlock
-                                                    FontFamily="{StaticResource IconFont}"
-                                                    FontSize="16"
-                                                    FontWeight="Thin"
-                                                    HorizontalAlignment="Center"
-                                                    Text="&#xe609;"
-                                                    VerticalAlignment="Center" />
-                                            </Button>
-                                        </Grid>
+                                            Margin="0,0,3,0"
+                                            Name="CloseButton"
+                                            Theme="{StaticResource TransparentButton}"
+                                            ToolTip.ShowDelay="900"
+                                            ToolTip.Tip="{Translate {x:Static loc:AppLanguageManager+Keys.app_tooltips_closeTab}}"
+                                            VerticalAlignment="Center"
+                                            Width="26">
+                                            <Button.Transitions>
+                                                <Transitions>
+                                                    <DoubleTransition Duration="0:0:0.1" Property="Opacity" />
+                                                </Transitions>
+                                            </Button.Transitions>
+                                            <TextBlock
+                                                FontFamily="{StaticResource IconFont}"
+                                                FontSize="12"
+                                                FontWeight="Thin"
+                                                HorizontalAlignment="Center"
+                                                Text="&#xe609;"
+                                                VerticalAlignment="Center" />
+                                        </Button>
+                                        <Border
+                                            CornerRadius="3,3,0,0"
+                                            Height="2"
+                                            HorizontalAlignment="Stretch"
+                                            Margin="10,0,10,1"
+                                            Name="TabAccentBar"
+                                            VerticalAlignment="Bottom">
+                                            <Border.Background>
+                                                <SolidColorBrush Color="{DynamicResource SystemAccentColorLight3}" />
+                                            </Border.Background>
+                                        </Border>
                                     </Panel>
                                 </Border>
                             </DataTemplate>
