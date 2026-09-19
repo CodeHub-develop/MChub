@@ -141,7 +141,6 @@
                                         </Panel>
                                     </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
                         </Expander>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

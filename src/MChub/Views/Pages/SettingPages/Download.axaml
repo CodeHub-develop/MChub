@@ -150,7 +150,7 @@
                         FontFamily="{StaticResource IconFont}"
                         FontSize="16"
                         FontWeight="Thin"
-                        Text="&#xe63c"
+                        Text="&#xe63c;"
                         VerticalAlignment="Center" />
                     <TextBlock
                         FontSize="15"
