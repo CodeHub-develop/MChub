@@ -83,12 +83,18 @@ public class TioTabWindowBase : FAAppWindow, ITioTabWindow, INotifyPropertyChang
     {
         if (_closeApproved) return;
 
+        // 子类可通过 OnClose 钩子拦截关闭（例如最后一个窗口时退出整个应用）
+        if (OnClose()) return;
+
         e.Cancel = true;
         if (!await CloseAllTabAsync(false)) return;
 
         _closeApproved = true;
         Close();
     }
+
+    /// <summary>关闭钩子：返回 true 表示关闭已由子类处理（如退出整个应用），否则走默认标签清理流程。</summary>
+    public virtual bool OnClose() => false;
 
     public async void CloseAllTab()
     {
@@ -135,7 +141,7 @@ public class TioTabWindowBase : FAAppWindow, ITioTabWindow, INotifyPropertyChang
 
     public TioNotificationManager Notification { get; set; }
     public TioToastManager Toast { get; set; }
-    public new Window Window { get; set; }
+    public Window Window { get; set; }
     public bool IsMainWindow { get; init; } 
     public ObservableCollection<TabEntry> Tabs { get; } = [];
 
