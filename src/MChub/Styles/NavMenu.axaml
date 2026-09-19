@@ -1,0 +1,35 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--
+        NavMenu / NavMenuItem Fluent 化。
+
+        用全局 Style 覆盖 tio NavMenuItem 模板可命名的 part（PART_Border / SelectionIndicator），
+        与标签栏共用 TabBackground / TabHover / TabSelected 资源语言：
+        - 默认无背景、微圆角；悬停用中性浅底；
+        - 选中用强调色淡底 + 左侧强调色指示条（Fluent NavigationView 选中形态）。
+        保持 NavMenuItem 全部状态属性与 SelectedItem 逻辑不变。
+    -->
+    <Style Selector="tio|NavMenuItem /template/ Border#PART_Border">
+        <Setter Property="CornerRadius" Value="4,4,4,4" />
+        <Setter Property="Margin" Value="0,1" />
+    </Style>
+    <Style Selector="tio|NavMenuItem /template/ Border#PART_Border:pointerover">
+        <Setter Property="Background" Value="{DynamicResource TabBackground}" />
+    </Style>
+    <Style Selector="tio|NavMenuItem:selected /template/ Border#PART_Border">
+        <Setter Property="Background" Value="{DynamicResource TabSelected}" />
+    </Style>
+    <Style Selector="tio|NavMenuItem:selected /template/ Rectangle#SelectionIndicator">
+        <Setter Property="Fill" Value="{DynamicResource SystemControlHighlightAccent}" />
+    </Style>
+
+    <!-- 叶子项(无子项)在悬停/选中时通过 NavMenuItem.Background 回填 PART_Border，保持同套配色 -->
+    <Style Selector="tio|NavMenuItem:selected">
+        <Setter Property="Background" Value="{DynamicResource TabSelected}" />
+    </Style>
+    <Style Selector="tio|NavMenuItem:empty:pointerover">
+        <Setter Property="Background" Value="{DynamicResource TabBackground}" />
+    </Style>
+</Styles>
