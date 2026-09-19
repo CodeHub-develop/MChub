@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using Avalonia.Interactivity;
+using FluentAvalonia.UI.Windowing;
 using MChub.Core.Const;
 using MChub.Core.Minecraft.Classes;
 using MChub.Localization;
