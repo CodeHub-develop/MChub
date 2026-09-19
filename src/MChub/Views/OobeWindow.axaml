@@ -1,11 +1,6 @@
-<tio:TioWindow
+<faApp:FAAppWindow
     CanResize="False"
     Height="480"
-    IsCloseBtnShow="{OnPlatform Default=True,
-                                macOS=False}"
-    IsMaxBtnShow="False"
-    IsMinBtnShow="{OnPlatform Default=True,
-                              macOS=False}"
     Title="{Translate {x:Static loc:AppLanguageManager+Keys.oobewindow_windowTitle}}"
     Width="780"
     WindowStartupLocation="CenterScreen"
@@ -19,6 +14,7 @@
     xmlns:controls="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:converter="clr-namespace:MChub.Module.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:faApp="using:FluentAvalonia.UI.Windowing"
     xmlns:fluentControls="clr-namespace:MChub.Controls"
     xmlns:javaClasses="clr-namespace:MChub.Core.Minecraft.Instance.Java;assembly=MChub.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -26,11 +22,11 @@
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:views="clr-namespace:MChub.Views"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:loc="using:MChub.Localization">
-    <tio:TioWindow.Resources>
+    <faApp:FAAppWindow.Resources>
         <SolidColorBrush Color="Transparent" x:Key="TitleBarBackgroundColor" />
         <converter:AccountTypeToBrushConverter x:Key="AccountTypeToBrushConverter" />
-    </tio:TioWindow.Resources>
-    <tio:TioWindow.Styles>
+    </faApp:FAAppWindow.Resources>
+    <faApp:FAAppWindow.Styles>
         <Style Selector="Border.dot">
             <Setter Property="Height" Value="6" />
             <Setter Property="Width" Value="6" />
@@ -41,15 +37,7 @@
         <Style Selector="Border.dot.active">
             <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
         </Style>
-    </tio:TioWindow.Styles>
-    <tio:TioWindow.TitleBarLeftContent>
-        <TextBlock
-            FontSize="16"
-            Margin="{OnPlatform '12,2,0,0',
-                                macOS='78,2,0,0'}"
-            Text="MChub"
-            VerticalAlignment="Center" />
-    </tio:TioWindow.TitleBarLeftContent>
+    </faApp:FAAppWindow.Styles>
     <DockPanel>
         <StackPanel
             DockPanel.Dock="Bottom"
@@ -420,4 +408,4 @@
             </DockPanel>
         </Carousel>
     </DockPanel>
-</tio:TioWindow>
+</faApp:FAAppWindow>

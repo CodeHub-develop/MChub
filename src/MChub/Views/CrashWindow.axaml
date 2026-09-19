@@ -1,11 +1,5 @@
-﻿<tio:TioWindow
+<faApp:FAAppWindow
     Height="535"
-    IsCloseBtnShow="{OnPlatform Default=True,
-                                macOS=False}"
-    IsMaxBtnShow="{OnPlatform Default=True,
-                              macOS=False}"
-    IsMinBtnShow="{OnPlatform Default=True,
-                              macOS=False}"
     Title="{Translate {x:Static loc:AppLanguageManager+Keys.crashwindow_windowTitle}}"
     Topmost="True"
     Width="880"
@@ -14,20 +8,13 @@
     x:Class="MChub.Views.CrashWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:faApp="using:FluentAvalonia.UI.Windowing"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:loc="using:MChub.Localization">
-    <tio:TioWindow.Resources>
+    <faApp:FAAppWindow.Resources>
         <SolidColorBrush Color="Transparent" x:Key="TitleBarBackgroundColor" />
-    </tio:TioWindow.Resources>
-    <tio:TioWindow.TitleBarLeftContent>
-        <TextBlock
-            FontSize="16"
-            Margin="{OnPlatform '12,2,0,0',
-                                macOS='78,2,0,0'}"
-            Text="MChub"
-            VerticalAlignment="Center" />
-    </tio:TioWindow.TitleBarLeftContent>
+    </faApp:FAAppWindow.Resources>
     <DockPanel>
         <TextBlock
             DockPanel.Dock="Top"
@@ -96,4 +83,4 @@
                 Name="SelectableTextBlock" />
         </ScrollViewer>
     </DockPanel>
-</tio:TioWindow>
+</faApp:FAAppWindow>

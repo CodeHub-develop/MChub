@@ -1,11 +1,6 @@
-﻿<tio:TioWindow
+<faApp:FAAppWindow
     CanResize="False"
     Height="380"
-    IsCloseBtnShow="{OnPlatform Default=True,
-                                macOS=False}"
-    IsMaxBtnShow="False"
-    IsMinBtnShow="{OnPlatform Default=True,
-                              macOS=False}"
     Title="{Binding WindowTitle}"
     Width="620"
     WindowStartupLocation="CenterScreen"
@@ -16,22 +11,15 @@
     x:DataType="views:BedrockPackageImportWindowViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:faApp="using:FluentAvalonia.UI.Windowing"
     xmlns:local="clr-namespace:MChub.Views.Pages.InstancePages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:views="clr-namespace:MChub.Views"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:loc="using:MChub.Localization">
-    <tio:TioWindow.Resources>
+    <faApp:FAAppWindow.Resources>
         <SolidColorBrush Color="Transparent" x:Key="TitleBarBackgroundColor" />
-    </tio:TioWindow.Resources>
-    <tio:TioWindow.TitleBarLeftContent>
-        <TextBlock
-            FontSize="16"
-            Margin="{OnPlatform '12,2,0,0',
-                                macOS='78,2,0,0'}"
-            Text="{Binding WindowTitle}"
-            VerticalAlignment="Center" />
-    </tio:TioWindow.TitleBarLeftContent>
+    </faApp:FAAppWindow.Resources>
     <Grid Margin="26,12,26,20" RowDefinitions="Auto,*,Auto">
         <Border
             Background="{DynamicResource TranslucentBackgroundColor}"
@@ -165,4 +153,4 @@
                 IsEnabled="{Binding CanImport}" />
         </StackPanel>
     </Grid>
-</tio:TioWindow>
+</faApp:FAAppWindow>

@@ -1,14 +1,11 @@
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using Avalonia.Input.Platform;
 using Avalonia.Interactivity;
-using Tio.Avalonia.Standard.Modules.DiskIO;
-using TioUi.Common.Helpers;
-using TioUi.Controls;
+using FluentAvalonia.UI.Windowing;
 
 namespace MChub.Views;
 
-public partial class CrashWindow : TioWindow
+public partial class CrashWindow : FAAppWindow
 {
     public CrashWindow() : this(string.Empty)
     {
@@ -18,31 +15,6 @@ public partial class CrashWindow : TioWindow
     {
         InitializeComponent();
         SelectableTextBlock.Text = e;
-
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            var nsWindow = TryGetPlatformHandle()?.Handle ?? IntPtr.Zero;
-            if (nsWindow == IntPtr.Zero) return;
-            Loaded += (_, _) => RefreshMacOsTitleBarButtons(nsWindow);
-            PropertyChanged += (_, args) =>
-            {
-                if (args.Property.Name != nameof(WindowState)) return;
-                RefreshMacOsTitleBarButtons(nsWindow);
-            };
-            SizeChanged += (_, _) => RefreshMacOsTitleBarButtons(nsWindow);
-        }
-    }
-
-    private static void RefreshMacOsTitleBarButtons(IntPtr nsWindow)
-    {
-        try
-        {
-            MacOsWindowHandler.RefreshTitleBarButtonPosition(nsWindow);
-        }
-        catch (Exception exception)
-        {
-            Logger.Error(exception);
-        }
     }
 
     private void Restart_OnClick(object? sender, RoutedEventArgs e)

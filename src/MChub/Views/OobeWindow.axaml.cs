@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Runtime.InteropServices;
 using Avalonia.Interactivity;
 using MChub.Core.Const;
 using MChub.Core.Minecraft.Classes;
@@ -11,20 +10,18 @@ using MChub.Views.Components.Operations.OpenFile;
 using Tio.Avalonia.Standard.Modules.DiskIO;
 using Tio.Avalonia.Standard.Tab.Gateway;
 using TioUi.Common;
-using TioUi.Common.Helpers;
 using TioUi.Controls;
 using TioUi.Shared;
 using NewMinecraftFolderViewModel = MChub.Views.Components.Operations.OpenFile.NewMinecraftFolderViewModel;
 
 namespace MChub.Views;
 
-public partial class OobeWindow : TioWindow
+public partial class OobeWindow : FAAppWindow
 {
     private const int STEP_COUNT = 4;
 
     private static readonly SoftBackEaseOut DotsEasing = new() { Amplitude = 0.6 };
 
-    private readonly IntPtr _macOsWindowHandle;
     private int _dotsAnimationToken;
 
     public OobeWindow()
@@ -40,46 +37,11 @@ public partial class OobeWindow : TioWindow
         };
 
         GoToStep(0);
-
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            var nsWindow = TryGetPlatformHandle()?.Handle ?? IntPtr.Zero;
-            if (nsWindow == IntPtr.Zero) return;
-            _macOsWindowHandle = nsWindow;
-            Loaded += (_, _) => RefreshMacOsTitleBarButtons(nsWindow);
-            PropertyChanged += (_, args) =>
-            {
-                if (args.Property.Name != nameof(WindowState)) return;
-                RefreshMacOsTitleBarButtons(nsWindow);
-            };
-            SizeChanged += (_, _) => RefreshMacOsTitleBarButtons(nsWindow);
-            Data.ConfigEntry.PropertyChanged += ConfigEntry_OnPropertyChanged;
-            Closed += (_, _) => Data.ConfigEntry.PropertyChanged -= ConfigEntry_OnPropertyChanged;
-        }
     }
 
     public Data Data => Data.Instance;
 
     public event Action? Completed;
-
-    private void ConfigEntry_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
-    {
-        if (e.PropertyName != nameof(Data.ConfigEntry.Theme) || _macOsWindowHandle == IntPtr.Zero)
-            return;
-        RefreshMacOsTitleBarButtons(_macOsWindowHandle);
-    }
-
-    private static void RefreshMacOsTitleBarButtons(IntPtr nsWindow)
-    {
-        try
-        {
-            MacOsWindowHandler.RefreshTitleBarButtonPosition(nsWindow);
-        }
-        catch (Exception exception)
-        {
-            Logger.Error(exception);
-        }
-    }
 
     private void GoToStep(int step)
     {
@@ -181,7 +143,7 @@ public partial class OobeWindow : TioWindow
         var result = await OverlayDialog
             .ShowCustomAsync<NewMinecraftFolder, NewMinecraftFolderViewModel, MinecraftFolderEntry>(
                 new NewMinecraftFolderViewModel(Data.ConfigEntry.MinecraftFolders.Select(x
-                    => x.FolderPath).ToList()), HostId, options);
+                    => x.FolderPath).ToList()), this.TryGetHostId(), options);
 
         if (result == null) return;
         Data.ConfigEntry.MinecraftFolders.Add(result);
@@ -189,7 +151,7 @@ public partial class OobeWindow : TioWindow
 
     private async void AddAccount_OnClick(object? sender, RoutedEventArgs e)
     {
-        var result = await AddAccount.Main(HostId, Data.ConfigEntry.AuthServers);
+        var result = await AddAccount.Main(this.TryGetHostId(), Data.ConfigEntry.AuthServers);
         if (result == null) return;
         foreach (var minecraftAccount in result.JavaAccounts) Data.ConfigEntry.MinecraftAccounts.Add(minecraftAccount);
         if (result.JavaAccounts.Count > 0)

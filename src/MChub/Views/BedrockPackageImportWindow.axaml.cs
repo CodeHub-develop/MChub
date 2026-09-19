@@ -1,24 +1,20 @@
 using System.ComponentModel;
-using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
+using FluentAvalonia.UI.Windowing;
 using MChub.Core.Minecraft.Services;
 using MChub.Localization;
 using MChub.Module.Initialize;
 using MChub.Views.Pages.InstancePages;
 using Tio.Avalonia.Standard.Modules.DiskIO;
-using TioUi.Common.Helpers;
-using TioUi.Controls;
 
 namespace MChub.Views;
 
-public partial class BedrockPackageImportWindow : TioWindow
+public partial class BedrockPackageImportWindow : FAAppWindow
 {
-    private readonly IntPtr _macOsWindowHandle;
-
     public BedrockPackageImportWindow() : this(string.Empty)
     {
     }
@@ -28,16 +24,6 @@ public partial class BedrockPackageImportWindow : TioWindow
         InitializeComponent();
         DataContext = new BedrockPackageImportWindowViewModel(archivePath, false);
         Loaded += async (_, _) => await InitializeAsync(archivePath);
-
-        if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            return;
-
-        _macOsWindowHandle = TryGetPlatformHandle()?.Handle ?? IntPtr.Zero;
-        if (_macOsWindowHandle == IntPtr.Zero)
-            return;
-        Loaded += (_, _) => RefreshMacOsTitleBarButtons();
-        PropertyChanged += Window_OnPropertyChanged;
-        SizeChanged += (_, _) => RefreshMacOsTitleBarButtons();
     }
 
     private async Task InitializeAsync(string archivePath)
@@ -61,24 +47,6 @@ public partial class BedrockPackageImportWindow : TioWindow
                 CommonLanguageManager.Instance.bedrockPackageImportWindow_initFailed.CurrentValue(),
                 exception.Message);
             viewModel.IsBusy = false;
-        }
-    }
-
-    private void Window_OnPropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
-    {
-        if (e.Property.Name == nameof(WindowState))
-            RefreshMacOsTitleBarButtons();
-    }
-
-    private void RefreshMacOsTitleBarButtons()
-    {
-        try
-        {
-            MacOsWindowHandler.RefreshTitleBarButtonPosition(_macOsWindowHandle);
-        }
-        catch (Exception exception)
-        {
-            Logger.Error(exception);
         }
     }
 
