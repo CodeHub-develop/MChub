@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
 using Avalonia.Interactivity;
@@ -42,6 +42,25 @@ public partial class LitematicaPage : UserControl, ITioTabPage
     {
         _vm.Release();
         DataContext = null;
+    }
+
+    private async void BrowsePath_OnClick(object? sender, RoutedEventArgs e)
+    {
+        if (sender is not Control control) return;
+        var storage = TopLevel.GetTopLevel(control)?.StorageProvider;
+        if (storage == null) return;
+        var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
+        {
+            Title = CommonLanguageManager.Instance.litematica_pickFile.CurrentValue(),
+            FileTypeFilter =
+            [
+                new FilePickerFileType("Litematica") { Patterns = ["*.litematic"] },
+                FilePickerFileTypes.All
+            ]
+        });
+        var path = files.FirstOrDefault()?.TryGetLocalPath();
+        if (path != null)
+            _vm.FilePath = path;
     }
 
     private void ExportTxt_Click(object? sender, RoutedEventArgs e)

@@ -11,19 +11,22 @@ using MChub.Views.Components.Operations.OpenFile;
 using Tio.Avalonia.Standard.Modules.DiskIO;
 using Tio.Avalonia.Standard.Tab.Gateway;
 using TioUi.Common;
+using TioUi.Common.Extensions;
 using TioUi.Controls;
 using TioUi.Shared;
 using NewMinecraftFolderViewModel = MChub.Views.Components.Operations.OpenFile.NewMinecraftFolderViewModel;
 
 namespace MChub.Views;
 
-public partial class OobeWindow : FAAppWindow
+public partial class OobeWindow : FAAppWindow, IHostIdProvider
 {
     private const int STEP_COUNT = 4;
 
     private static readonly SoftBackEaseOut DotsEasing = new() { Amplitude = 0.6 };
 
     private int _dotsAnimationToken;
+
+    public string? HostId { get; set; } = Guid.NewGuid().ToString();
 
     public OobeWindow()
     {

@@ -136,17 +136,36 @@
                     Width="40" />
             </Grid>
         </StackPanel>
-        <tio:Banner
-            Classes="Bordered"
-            Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.download_highConcurrencyWarning}}"
+        <Border
+            Background="{DynamicResource SystemFillColorCautionBackground}"
+            BorderBrush="{DynamicResource SystemFillColorCaution}"
+            BorderThickness="1"
             CornerRadius="10"
-            HorizontalContentAlignment="Left"
             IsVisible="{Binding HasHighConcurrencyWarning}"
             Margin="0,10,0,15"
-            Type="Warning">
-            <tio:Banner.Header>
-                <TextBlock FontSize="15" Text="{Translate {x:Static loc:SettingsLanguageManager+Keys.download_warning}}" />
-            </tio:Banner.Header>
-        </tio:Banner>
+            Padding="12,10">
+            <StackPanel Spacing="4">
+                <Panel>
+                    <TextBlock
+                        FontFamily="{StaticResource IconFont}"
+                        FontSize="16"
+                        FontWeight="Thin"
+                        Text="&#xe63c"
+                        VerticalAlignment="Center" />
+                    <TextBlock
+                        FontSize="15"
+                        Foreground="{DynamicResource TextFillColorPrimary}"
+                        Margin="22,0,0,0"
+                        Text="{Translate {x:Static loc:SettingsLanguageManager+Keys.download_warning}}"
+                        VerticalAlignment="Center" />
+                </Panel>
+                <TextBlock
+                    Foreground="{DynamicResource TextFillColorSecondary}"
+                    FontSize="13"
+                    Margin="22,0,0,0"
+                    Text="{Translate {x:Static loc:SettingsLanguageManager+Keys.download_highConcurrencyWarning}}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
     </StackPanel>
 </UserControl>

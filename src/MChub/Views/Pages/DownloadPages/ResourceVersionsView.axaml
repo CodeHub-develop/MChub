@@ -56,14 +56,14 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate x:DataType="local:ResourceVersionGroup">
-                                <tio:TioExpander
+                                <Expander
                                     Background="{DynamicResource TranslucentBackgroundColor}"
                                     BorderBrush="{DynamicResource TranslucentBorderBrush}"
                                     BorderThickness="1"
-                                    HeaderHeight="46"
-                                    HeaderPadding="0"
+                                    CornerRadius="8"
                                     IsExpanded="{Binding IsExpanded}"
-                                    Margin="0,0,0,10">
+                                    Margin="0,0,0,10"
+                                    Padding="4">
                                     <Expander.Header>
                                         <DockPanel Margin="5,0,14,0">
                                             <TextBlock
@@ -79,42 +79,40 @@
                                                 VerticalAlignment="Center" />
                                         </DockPanel>
                                     </Expander.Header>
-                                    <tio:TioExpander.Content>
-                                        <StackPanel Margin="14,0,14,12">
-                                            <ItemsControl ItemsSource="{Binding VisibleFiles}">
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate x:DataType="models:ResourceVersionFileItem">
-                                                        <Button
-                                                            Background="Transparent"
-                                                            Click="VersionFile_OnClick"
-                                                            HorizontalAlignment="Stretch"
-                                                            HorizontalContentAlignment="Stretch"
-                                                            Margin="0,2,0,0"
-                                                            Padding="0">
-                                                            <StackPanel Margin="9,5,5,6">
-                                                                <TextBlock
-                                                                    FontWeight="SemiBold"
-                                                                    Text="{Binding DisplayName}"
-                                                                    TextTrimming="CharacterEllipsis" />
-                                                                <TextBlock
-                                                                    FontSize="12"
-                                                                    Foreground="{DynamicResource InnerForegroundColor}"
-                                                                    Text="{Binding Details}"
-                                                                    TextTrimming="CharacterEllipsis" />
-                                                            </StackPanel>
-                                                        </Button>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                            <Button
-                                                Command="{Binding LoadMoreCommand}"
-                                                Content="{Binding LoadMoreText}"
-                                                HorizontalAlignment="Left"
-                                                IsVisible="{Binding HasMore}"
-                                                Margin="0,10,0,0" />
-                                        </StackPanel>
-                                    </tio:TioExpander.Content>
-                                </tio:TioExpander>
+                                    <StackPanel Margin="14,0,14,12">
+                                        <ItemsControl ItemsSource="{Binding VisibleFiles}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate x:DataType="models:ResourceVersionFileItem">
+                                                    <Button
+                                                        Background="Transparent"
+                                                        Click="VersionFile_OnClick"
+                                                        HorizontalAlignment="Stretch"
+                                                        HorizontalContentAlignment="Stretch"
+                                                        Margin="0,2,0,0"
+                                                        Padding="0">
+                                                        <StackPanel Margin="9,5,5,6">
+                                                            <TextBlock
+                                                                FontWeight="SemiBold"
+                                                                Text="{Binding DisplayName}"
+                                                                TextTrimming="CharacterEllipsis" />
+                                                            <TextBlock
+                                                                FontSize="12"
+                                                                Foreground="{DynamicResource InnerForegroundColor}"
+                                                                Text="{Binding Details}"
+                                                                TextTrimming="CharacterEllipsis" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                        <Button
+                                            Command="{Binding LoadMoreCommand}"
+                                            Content="{Binding LoadMoreText}"
+                                            HorizontalAlignment="Left"
+                                            IsVisible="{Binding HasMore}"
+                                            Margin="0,10,0,0" />
+                                    </StackPanel>
+                                </Expander>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

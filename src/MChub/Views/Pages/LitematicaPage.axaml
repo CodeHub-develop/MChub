@@ -35,11 +35,16 @@
                             Margin="8,0,0,0"
                             VerticalAlignment="Center"
                             Width="80" />
-                        <tio:PathPicker
-                            FileFilter="[Litematica, *.litematic]"
-                            SelectedPathsText="{Binding FilePath}"
-                            Title="{Translate {x:Static loc:PagesLanguageManager+Keys.litematicapage_SelectLitematicaProjectionFile}}"
-                            UsePickerType="OpenFile" />
+                        <Button
+                            Click="BrowsePath_OnClick"
+                            Content="{Translate {x:Static loc:PagesLanguageManager+Keys.litematicapage_SelectLitematicaProjectionFile}}"
+                            DockPanel.Dock="Right"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center" />
+                        <TextBox
+                            IsReadOnly="True"
+                            Text="{Binding FilePath}"
+                            VerticalContentAlignment="Center" />
                     </DockPanel>
                     <ProgressBar
                         IsIndeterminate="{Binding IsLoading}"
