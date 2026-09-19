@@ -228,14 +228,14 @@ public partial class TabWindow : TioTabWindowBase
             TitleBarThings.SizeChanged += (_, _) =>
             {
                 NavScrollViewer.Margin =
-                    new Thickness(TitleBarLogo.Bounds.Width + 86, -44, TitleBarThings.Bounds.Width + 15 + 30, 0);
+                    new Thickness(TitleBarLogo.Bounds.Width + 86, 0, TitleBarThings.Bounds.Width + 15 + 30, 0);
             };
         }
         else
         {
             TitleBarThings.SizeChanged += (_, _) =>
             {
-                NavScrollViewer.Margin = new Thickness(TitleBarLogo.Bounds.Width + 3, -44,
+                NavScrollViewer.Margin = new Thickness(TitleBarLogo.Bounds.Width + 3, 0,
                     90 + 30 + TitleBarThings.Bounds.Width, 0);
             };
         }
@@ -590,41 +590,14 @@ public partial class TabWindow : TioTabWindowBase
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            if (entry.EnableManagedWindowDecorationsOnWindows)
-            {
-                WindowDecorations = WindowDecorations.None;
-                FrameBorderThickness = new Thickness(entry.EnableManagedWindowBorderOnWindows
-                    ? Math.Clamp(entry.CustomWindowBorderThickness, 1, 6)
-                    : 1);
-                FrameBorderCornerRadius = new CornerRadius(entry.CustomWindowBorderCornerRadius);
-                FrameBorderBrush = entry.EnableManagedWindowBorderOnWindows
-                    ? new SolidColorBrush(entry.CustomWindowBorderColor)
-                    : new SolidColorBrush(Colors.Transparent);
-                IsManagedResizerVisible = true;
-            }
-            else
-            {
-                WindowDecorations = WindowDecorations.Full;
-                FrameBorderThickness = new Thickness(0);
-                FrameBorderCornerRadius = new CornerRadius(0);
-                IsManagedResizerVisible = false;
-            }
+            WindowDecorations = entry.EnableManagedWindowDecorationsOnWindows
+                ? WindowDecorations.None
+                : WindowDecorations.Full;
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            // Linux uses client-side decorations by default. Apply the same
-            // user-configurable frame settings used by the Windows path.
+            // Linux uses client-side decorations by default.
             WindowDecorations = WindowDecorations.None;
-            FrameBorderThickness = entry.EnableManagedWindowBorderOnWindows
-                ? new Thickness(Math.Clamp(entry.CustomWindowBorderThickness, 0, 6))
-                : new Thickness(0);
-            FrameBorderCornerRadius = entry.EnableManagedWindowBorderOnWindows
-                ? new CornerRadius(entry.CustomWindowBorderCornerRadius)
-                : new CornerRadius(0);
-            FrameBorderBrush = entry.EnableManagedWindowBorderOnWindows
-                ? new SolidColorBrush(entry.CustomWindowBorderColor)
-                : new SolidColorBrush(Colors.Transparent);
-            IsManagedResizerVisible = true;
         }
 
         switch (entry.BackgroundMode)

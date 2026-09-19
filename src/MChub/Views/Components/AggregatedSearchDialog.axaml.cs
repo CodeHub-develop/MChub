@@ -64,9 +64,9 @@ public partial class AggregatedSearchDialog : UserControl
 
 public class AggregatedSearchDialogViewModel : ObservableObject
 {
-    public readonly TioWindow Window;
+    public readonly TopLevel Window;
 
-    public AggregatedSearchDialogViewModel(TioWindow window)
+    public AggregatedSearchDialogViewModel(TopLevel window)
     {
         Window = window;
     }

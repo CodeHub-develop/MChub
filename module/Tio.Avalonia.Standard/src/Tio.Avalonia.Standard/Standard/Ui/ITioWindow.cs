@@ -7,7 +7,7 @@ public interface ITioWindow
 {
     public TioNotificationManager Notification { get; set; }
     public TioToastManager Toast { get; set; }
-    public TioWindow Window { get; set; }
+    public Window Window { get; set; }
 
     public void Show()
     {

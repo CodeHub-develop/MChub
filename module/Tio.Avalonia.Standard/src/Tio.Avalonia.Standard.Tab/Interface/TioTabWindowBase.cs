@@ -8,20 +8,28 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using CommunityToolkit.Mvvm.Input;
+using FluentAvalonia.UI.Windowing;
 using Tio.Avalonia.Standard.Modules.Extensions;
 using Tio.Avalonia.Standard.Tab.Entries;
 using TioUi.Controls;
 
 namespace Tio.Avalonia.Standard.Tab.Interface;
 
-public class TioTabWindowBase : TioWindow, ITioTabWindow, INotifyPropertyChanged
+public class TioTabWindowBase : FAAppWindow, ITioTabWindow, INotifyPropertyChanged, IHostIdProvider
 {
     private static readonly List<TioTabWindowBase> _allWindows = [];
     private bool _closeApproved;
+    private string? _hostId;
 
     public static IReadOnlyList<TioTabWindowBase> AllWindows => _allWindows.AsReadOnly();
 
     public string WindowId { get; }
+
+    public string? HostId
+    {
+        get => _hostId ??= Guid.NewGuid().ToString();
+        set => _hostId = value;
+    }
 
     public TioTabWindowBase()
     {
@@ -127,7 +135,7 @@ public class TioTabWindowBase : TioWindow, ITioTabWindow, INotifyPropertyChanged
 
     public TioNotificationManager Notification { get; set; }
     public TioToastManager Toast { get; set; }
-    public TioWindow Window { get; set; }
+    public new Window Window { get; set; }
     public bool IsMainWindow { get; init; } 
     public ObservableCollection<TabEntry> Tabs { get; } = [];
 
