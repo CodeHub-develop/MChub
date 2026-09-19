@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.VisualTree;
 using TioUi.Controls;
 
@@ -18,7 +18,11 @@ public static class TioControl
 
     public static string? TryGetHostId(this Control control)
     {
-        if (control.GetTopLevel() is TioWindow tioWindow)
+        var topLevel = control.GetTopLevel();
+        if (topLevel is IHostIdProvider hostProvider)
+            return hostProvider.HostId;
+
+        if (topLevel is TioWindow tioWindow)
             return tioWindow.HostId;
 
         if (control is TioView view)

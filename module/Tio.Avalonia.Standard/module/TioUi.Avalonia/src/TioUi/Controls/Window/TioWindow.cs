@@ -6,7 +6,7 @@ using Avalonia.Media;
 
 namespace TioUi.Controls;
 
-public class TioWindow : Window
+public class TioWindow : Window, IHostIdProvider
 {
     private Action<TioTitleBar>? _titleBarLoadedCallback;
     private OverlayDialogHost? _dialogHost;
