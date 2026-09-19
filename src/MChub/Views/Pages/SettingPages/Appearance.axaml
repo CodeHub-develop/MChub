@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d"
@@ -6,13 +6,13 @@
     x:DataType="settingPages:Appearance"
     xmlns="https://github.com/avaloniaui"
     xmlns:const1="clr-namespace:MChub.Core.Const;assembly=MChub.Core"
+    xmlns:controls="clr-namespace:MChub.Controls"
     xmlns:converter="clr-namespace:MChub.Module.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lingua="https://irihi.tech/lingua"
     xmlns:loc="using:MChub.Localization"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:settingPages="clr-namespace:MChub.Views.Pages.SettingPages"
-    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <UserControl.Resources>
         <converter:BackgroundModeCompareConverter x:Key="BackgroundModeCompareConverter" />
@@ -102,15 +102,15 @@
                     HorizontalAlignment="Right"
                     Text="{Binding Data.ConfigEntry.ThemeColor}" />
             </Panel>
-            <tio:TioColorPicker
+            <controls:FluentColorPicker
                 Color="{Binding Data.ConfigEntry.ThemeColor}"
                 ColorSpectrumShape="Box"
                 HorizontalAlignment="Stretch"
                 SelectedIndex="1">
-                <tio:TioColorPicker.Palette>
-                    <tio:TioColorLightPalette />
-                </tio:TioColorPicker.Palette>
-            </tio:TioColorPicker>
+                <controls:FluentColorPicker.Palette>
+                    <FluentColorPalette />
+                </controls:FluentColorPicker.Palette>
+            </controls:FluentColorPicker>
         </StackPanel>
         <StackPanel Spacing="5">
             <DockPanel>
@@ -203,15 +203,15 @@
                 Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_backgroundColor}}"
                 FontSize="13"
                 Foreground="{DynamicResource InnerForegroundColor}" />
-            <tio:TioColorPicker
+            <controls:FluentColorPicker
                 Color="{Binding Data.ConfigEntry.BackgroundSolidColor}"
                 ColorSpectrumShape="Box"
                 HorizontalAlignment="Stretch"
                 SelectedIndex="1">
-                <tio:TioColorPicker.Palette>
-                    <tio:TioColorLightPalette />
-                </tio:TioColorPicker.Palette>
-            </tio:TioColorPicker>
+                <controls:FluentColorPicker.Palette>
+                    <FluentColorPalette />
+                </controls:FluentColorPicker.Palette>
+            </controls:FluentColorPicker>
         </StackPanel>
         <StackPanel IsVisible="{Binding BackgroundMode, Source={x:Static const1:Data.ConfigEntry}, Converter={StaticResource BackgroundModeCompareConverter}, ConverterParameter='Image'}" Spacing="5">
             <Label
@@ -315,15 +315,15 @@
                 Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_imageMaskColor}}"
                 FontSize="13"
                 Foreground="{DynamicResource InnerForegroundColor}" />
-            <tio:TioColorPicker
+            <controls:FluentColorPicker
                 Color="{Binding Data.ConfigEntry.ImageMaskColor}"
                 ColorSpectrumShape="Box"
                 HorizontalAlignment="Stretch"
                 SelectedIndex="1">
-                <tio:TioColorPicker.Palette>
-                    <tio:TioColorLightPalette />
-                </tio:TioColorPicker.Palette>
-            </tio:TioColorPicker>
+                <controls:FluentColorPicker.Palette>
+                    <FluentColorPalette />
+                </controls:FluentColorPicker.Palette>
+            </controls:FluentColorPicker>
         </StackPanel>
         <StackPanel Spacing="5">
             <StackPanel.IsVisible>
@@ -359,15 +359,15 @@
                 Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_acrylicColor}}"
                 FontSize="13"
                 Foreground="{DynamicResource InnerForegroundColor}" />
-            <tio:TioColorPicker
+            <controls:FluentColorPicker
                 Color="{Binding Data.ConfigEntry.BackgroundSolidColor}"
                 ColorSpectrumShape="Box"
                 HorizontalAlignment="Stretch"
                 SelectedIndex="1">
-                <tio:TioColorPicker.Palette>
-                    <tio:TioColorLightPalette />
-                </tio:TioColorPicker.Palette>
-            </tio:TioColorPicker>
+                <controls:FluentColorPicker.Palette>
+                    <FluentColorPalette />
+                </controls:FluentColorPicker.Palette>
+            </controls:FluentColorPicker>
         </StackPanel>
         <StackPanel IsVisible="{Binding BackgroundMode, Source={x:Static const1:Data.ConfigEntry}, Converter={StaticResource BackgroundModeCompareConverter}, ConverterParameter='Acrylic'}" Spacing="5">
             <Label
@@ -393,15 +393,15 @@
                 Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_blurColor}}"
                 FontSize="13"
                 Foreground="{DynamicResource InnerForegroundColor}" />
-            <tio:TioColorPicker
+            <controls:FluentColorPicker
                 Color="{Binding Data.ConfigEntry.BackgroundSolidColor}"
                 ColorSpectrumShape="Box"
                 HorizontalAlignment="Stretch"
                 SelectedIndex="1">
-                <tio:TioColorPicker.Palette>
-                    <tio:TioColorLightPalette />
-                </tio:TioColorPicker.Palette>
-            </tio:TioColorPicker>
+                <controls:FluentColorPicker.Palette>
+                    <FluentColorPalette />
+                </controls:FluentColorPicker.Palette>
+            </controls:FluentColorPicker>
         </StackPanel>
         <StackPanel IsVisible="{Binding BackgroundMode, Source={x:Static const1:Data.ConfigEntry}, Converter={StaticResource BackgroundModeCompareConverter}, ConverterParameter='Blur'}" Spacing="5">
             <Label
@@ -427,15 +427,15 @@
                 Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_micaColor}}"
                 FontSize="13"
                 Foreground="{DynamicResource InnerForegroundColor}" />
-            <tio:TioColorPicker
+            <controls:FluentColorPicker
                 Color="{Binding Data.ConfigEntry.BackgroundSolidColor}"
                 ColorSpectrumShape="Box"
                 HorizontalAlignment="Stretch"
                 SelectedIndex="1">
-                <tio:TioColorPicker.Palette>
-                    <tio:TioColorLightPalette />
-                </tio:TioColorPicker.Palette>
-            </tio:TioColorPicker>
+                <controls:FluentColorPicker.Palette>
+                    <FluentColorPalette />
+                </controls:FluentColorPicker.Palette>
+            </controls:FluentColorPicker>
         </StackPanel>
         <StackPanel IsVisible="{Binding BackgroundMode, Source={x:Static const1:Data.ConfigEntry}, Converter={StaticResource BackgroundModeCompareConverter}, ConverterParameter='Mica'}" Spacing="5">
             <Label
@@ -506,15 +506,15 @@
                 Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_foregroundColor}}"
                 FontSize="13"
                 Foreground="{DynamicResource InnerForegroundColor}" />
-            <tio:TioColorPicker
+            <controls:FluentColorPicker
                 Color="{Binding Data.ConfigEntry.ForegroundColor}"
                 ColorSpectrumShape="Box"
                 HorizontalAlignment="Stretch"
                 SelectedIndex="1">
-                <tio:TioColorPicker.Palette>
-                    <tio:TioColorLightPalette />
-                </tio:TioColorPicker.Palette>
-            </tio:TioColorPicker>
+                <controls:FluentColorPicker.Palette>
+                    <FluentColorPalette />
+                </controls:FluentColorPicker.Palette>
+            </controls:FluentColorPicker>
         </StackPanel>
         <StackPanel IsVisible="{Binding IsWindows}" Spacing="5">
             <Label
@@ -542,15 +542,15 @@
                     Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_borderColor}}"
                     FontSize="13"
                     Foreground="{DynamicResource InnerForegroundColor}" />
-                <tio:TioColorPicker
+                <controls:FluentColorPicker
                     Color="{Binding Data.ConfigEntry.CustomWindowBorderColor}"
                     ColorSpectrumShape="Box"
                     HorizontalAlignment="Stretch"
                     SelectedIndex="1">
-                    <tio:TioColorPicker.Palette>
-                        <tio:TioColorLightPalette />
-                    </tio:TioColorPicker.Palette>
-                </tio:TioColorPicker>
+                    <controls:FluentColorPicker.Palette>
+                        <FluentColorPalette />
+                    </controls:FluentColorPicker.Palette>
+                </controls:FluentColorPicker>
                 <Label
                     Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_borderCornerRadius}}"
                     FontSize="13"

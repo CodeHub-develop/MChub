@@ -1,8 +1,63 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
+    xmlns:controls="clr-namespace:MChub.Controls"
     xmlns:lingua="https://irihi.tech/lingua"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <FontFamily x:Key="IconFont">avares://MChub/Assets/Fonts/iconfont.ttf#iconfont</FontFamily>
+
+    <ControlTheme TargetType="controls:FluentColorPicker" x:Key="{x:Type controls:FluentColorPicker}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:FluentColorPicker">
+                <Button
+                    Background="{DynamicResource ControlFillColorSecondary}"
+                    BorderBrush="{DynamicResource ControlStrokeColorDefault}"
+                    BorderThickness="1"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    HorizontalContentAlignment="Left"
+                    MinHeight="{TemplateBinding MinHeight}"
+                    Padding="8,4">
+                    <Button.Flyout>
+                        <Flyout>
+                            <ColorView
+                                Color="{Binding Color, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                ColorSpectrumShape="{Binding ColorSpectrumShape, RelativeSource={RelativeSource TemplatedParent}}"
+                                IsColorPreviewVisible="True"
+                                IsColorSpectrumSliderVisible="True"
+                                Palette="{Binding Palette, RelativeSource={RelativeSource TemplatedParent}}"
+                                SelectedIndex="{Binding SelectedIndex, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                Width="308" />
+                        </Flyout>
+                    </Button.Flyout>
+                    <Panel>
+                        <Grid ColumnDefinitions="30,*">
+                            <Border
+                                BorderBrush="{DynamicResource ControlStrokeColorDefault}"
+                                BorderThickness="1"
+                                CornerRadius="4,4,4,4"
+                                Grid.Column="0"
+                                Height="28"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center">
+                                <Border
+                                    Background="{Binding ColorBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                                    CornerRadius="3.5"
+                                    Margin="1" />
+                            </Border>
+                            <TextBlock
+                                Grid.Column="1"
+                                Foreground="{DynamicResource TextFillColorSecondary}"
+                                Margin="8,0,0,0"
+                                Text="{Binding Color, RelativeSource={RelativeSource TemplatedParent}}"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                    </Panel>
+                </Button>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
 
     <ControlTheme TargetType="lingua:CulturePicker" x:Key="CulturePickerTheme">
         <Setter Property="Template">

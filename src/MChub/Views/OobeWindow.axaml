@@ -1,4 +1,4 @@
-﻿<tio:TioWindow
+<tio:TioWindow
     CanResize="False"
     Height="480"
     IsCloseBtnShow="{OnPlatform Default=True,
@@ -19,6 +19,7 @@
     xmlns:controls="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:converter="clr-namespace:MChub.Module.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fluentControls="clr-namespace:MChub.Controls"
     xmlns:javaClasses="clr-namespace:MChub.Core.Minecraft.Instance.Java;assembly=MChub.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:styles="clr-namespace:MChub.Styles"
@@ -174,15 +175,15 @@
                             HorizontalAlignment="Right"
                             Text="{Binding Data.ConfigEntry.ThemeColor}" />
                     </Panel>
-                    <tio:TioColorPicker
+                    <fluentControls:FluentColorPicker
                         Color="{Binding Data.ConfigEntry.ThemeColor}"
                         ColorSpectrumShape="Box"
                         HorizontalAlignment="Stretch"
                         SelectedIndex="1">
-                        <tio:TioColorPicker.Palette>
-                            <tio:TioColorLightPalette />
-                        </tio:TioColorPicker.Palette>
-                    </tio:TioColorPicker>
+                        <fluentControls:FluentColorPicker.Palette>
+                            <FluentColorPalette />
+                        </fluentControls:FluentColorPicker.Palette>
+                    </fluentControls:FluentColorPicker>
                 </StackPanel>
             </StackPanel>
 
