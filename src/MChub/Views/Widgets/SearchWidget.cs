@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Input;
@@ -16,7 +16,7 @@ using MChub.Views.Pages;
 using MChub.Views.Pages.DownloadPages;
 using Tio.Avalonia.Standard.Tab.Entries;
 using Tio.Avalonia.Standard.Tab.Interface;
-using AutoCompleteBox = TioUi.Controls.AutoCompleteBox;
+using AutoCompleteBox = Avalonia.Controls.AutoCompleteBox;
 
 namespace MChub.Views.Widgets;
 
@@ -24,7 +24,6 @@ public sealed class SearchWidget : IWidgetContent
 {
     private static readonly string SearchIconData = "\ue615";
 
-    private readonly Panel _innerLeftPlaceholder;
     private readonly ComboBox _modeComboBox;
     private readonly Grid _root;
     private readonly AutoCompleteBox _searchBox;
@@ -44,9 +43,9 @@ public sealed class SearchWidget : IWidgetContent
             Theme = (ControlTheme)Application.Current!.FindResource("BareComboBox")!,
             ItemsSource = _searchModes,
             MaxDropDownHeight = 999,
-            HorizontalAlignment = HorizontalAlignment.Left,
+            HorizontalAlignment = HorizontalAlignment.Stretch,
             VerticalAlignment = VerticalAlignment.Stretch,
-            Margin = new Thickness(12, 0, 0, 0)
+            Margin = new Thickness(0, 0, 8, 0)
         };
         _modeComboBox.ItemTemplate = new FuncDataTemplate<SearchMode>((mode, _) =>
             new StackPanel
@@ -84,22 +83,23 @@ public sealed class SearchWidget : IWidgetContent
         };
 
 
-        _innerLeftPlaceholder = new Panel { Width = 0 };
-        _modeComboBox.SizeChanged += (_, e) =>
-            _innerLeftPlaceholder.Width = e.NewSize.Width;
-        _searchBox.InnerLeftContent = _innerLeftPlaceholder;
+        _modeComboBox.SelectedIndex = 0;
+
 
         var searchIcon = new TextBlock
         {
             FontFamily = IconResources.IconFont, FontWeight = FontWeight.Thin,
             Text = SearchIconData,
-            FontSize = 14
+            FontSize = 14,
+            HorizontalAlignment = HorizontalAlignment.Right,
+            VerticalAlignment = VerticalAlignment.Center,
+            IsHitTestVisible = false,
+            Margin = new Thickness(0, 0, 12, 0)
         };
         searchIcon.Bind(
             ForegroundProperty,
             searchIcon.GetResourceObservable("InnerForegroundColor")
         );
-        _searchBox.InnerRightContent = searchIcon;
 
 
         _searchBox.ItemTemplate = new FuncDataTemplate<AggregatedSearchEntry>((entry, _) =>
@@ -178,9 +178,13 @@ public sealed class SearchWidget : IWidgetContent
         _searchBox.AddHandler(KeyDownEvent, OnSearchKeyDown, RoutingStrategies.Bubble, true);
 
 
-        _root = new Grid();
-        _root.Children.Add(_searchBox);
+        _searchBox.Padding = new Thickness(0, 0, 32, 0);
+        _root = new Grid { ColumnDefinitions = new() { new(GridLength.Auto), new(GridLength.Star) } };
         _root.Children.Add(_modeComboBox);
+        _root.Children.Add(_searchBox);
+        _root.Children.Add(searchIcon);
+        Grid.SetColumn(_searchBox, 1);
+        Grid.SetColumn(searchIcon, 1);
         Content = _root;
     }
 

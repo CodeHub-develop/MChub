@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     d:DesignHeight="720"
     d:DesignWidth="1200"
     mc:Ignorable="d"
@@ -47,51 +47,58 @@
                 <ColumnDefinition Width="560" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <tio:AutoCompleteBox
-                DropDownOpened="SearchBox_OnDropDownOpened"
-                FilterMode="None"
-                Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                ItemTemplate="{StaticResource SearchItemTemplate}"
-                MaxDropDownHeight="336"
-                PlaceholderText="{Binding SearchPlaceholder}"
-                Populating="SearchBox_OnPopulating"
-                SelectionChanged="SearchBox_OnSelectionChanged"
-                ValueMemberBinding="{ReflectionBinding Title}"
-                x:Name="SearchBox">
-                <tio:AutoCompleteBox.InnerLeftContent>
-                    <Panel Width="{Binding Bounds.Width, ElementName=SearchModeComboBox}" />
-                </tio:AutoCompleteBox.InnerLeftContent>
-                <tio:AutoCompleteBox.InnerRightContent>
-                    <TextBlock FontFamily="{StaticResource IconFont}" FontWeight="Thin" Text="&#xe615;" FontSize="18" Foreground="{DynamicResource InnerForegroundColor}" />
-                </tio:AutoCompleteBox.InnerRightContent>
-            </tio:AutoCompleteBox>
-            <ComboBox
-                Grid.Column="1"
-                HorizontalAlignment="Left"
-                ItemsSource="{Binding SearchModes}"
-                Margin="12,0,0,0"
-                MaxDropDownHeight="999"
-                SelectedItem="{Binding SelectedSearchMode}"
-                Theme="{StaticResource BareComboBox}"
-                VerticalAlignment="Stretch"
-                x:Name="SearchModeComboBox">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate DataType="pages:SearchMode">
-                        <StackPanel
-                            Orientation="Horizontal"
-                            Spacing="6"
-                            VerticalAlignment="Center">
-                            <TextBlock
-                                FontFamily="{StaticResource IconFont}" FontWeight="Thin"
-                                FontSize="16"
-                                IsVisible="{Binding IconData, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
-                                Text="{Binding IconData}" />
-                            <TextBlock Text="{Binding DisplayText}" VerticalAlignment="Center" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+            <Grid Grid.Column="1" ColumnDefinitions="Auto,*">
+                <ComboBox
+                    ItemsSource="{Binding SearchModes}"
+                    Margin="0,0,8,0"
+                    MaxDropDownHeight="999"
+                    SelectedItem="{Binding SelectedSearchMode}"
+                    Theme="{StaticResource BareComboBox}"
+                    VerticalAlignment="Stretch"
+                    x:Name="SearchModeComboBox">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="pages:SearchMode">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Spacing="6"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    FontFamily="{StaticResource IconFont}"
+                                    FontWeight="Thin"
+                                    FontSize="16"
+                                    IsVisible="{Binding IconData, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                                    Text="{Binding IconData}" />
+                                <TextBlock Text="{Binding DisplayText}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <AutoCompleteBox
+                    DropDownOpened="SearchBox_OnDropDownOpened"
+                    FilterMode="None"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    ItemTemplate="{StaticResource SearchItemTemplate}"
+                    MaxDropDownHeight="336"
+                    Padding="0,0,32,0"
+                    PlaceholderText="{Binding SearchPlaceholder}"
+                    Populating="SearchBox_OnPopulating"
+                    SelectionChanged="SearchBox_OnSelectionChanged"
+                    ValueMemberBinding="{ReflectionBinding Title}"
+                    VerticalAlignment="Stretch"
+                    x:Name="SearchBox" />
+                <TextBlock
+                    FontFamily="{StaticResource IconFont}"
+                    FontWeight="Thin"
+                    FontSize="18"
+                    Foreground="{DynamicResource InnerForegroundColor}"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    IsHitTestVisible="False"
+                    Margin="0,0,12,0"
+                    Text="&#xe615;"
+                    VerticalAlignment="Center" />
+            </Grid>
         </Grid>
         <Rectangle
             DockPanel.Dock="Top"

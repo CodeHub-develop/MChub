@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -16,7 +16,7 @@ using MChub.Views.Pages.DownloadPages;
 using Tio.Avalonia.Standard.Tab.Entries;
 using Tio.Avalonia.Standard.Tab.Interface;
 using TioUi.Common.Extensions;
-using AutoCompleteBox = TioUi.Controls.AutoCompleteBox;
+using AutoCompleteBox = Avalonia.Controls.AutoCompleteBox;
 
 namespace MChub.Views.Pages;
 
