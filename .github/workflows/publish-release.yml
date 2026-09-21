@@ -490,15 +490,3 @@ jobs:
         with:
           name: MChub.v${{ needs.prepare.outputs.version }}.all-builds
           path: ./MChub.v${{ needs.prepare.outputs.version }}.all-builds.zip
-
-
-  aur:
-    needs: [prepare, publish]
-    uses: ./.github/workflows/publish-aur.yml
-    with:
-      pkgname: mchub-bin
-      tag: ${{ needs.prepare.outputs.tag }}
-      app_version: ${{ needs.prepare.outputs.version }}
-    secrets:
-      AUR_SSH_PRIVATE_KEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-      AUR_USERNAME: ${{ secrets.AUR_USERNAME }}
