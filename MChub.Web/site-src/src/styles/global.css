@@ -1,19 +1,29 @@
+/* ============================================================
+   全局样式 —— 完全复刻自 x-coder-ocs/website，仅去掉阿里妈妈字体
+   （仓库里没有字体文件，回退到系统字体栈）
+   ============================================================ */
+
 :root {
-  --bg: #090c08;
-  --bg-2: #0f150c;
-  --panel: #141b10;
-  --line: #24301c;
-  --accent: #7cbd4b;
-  --accent-strong: #5ea843;
-  --accent-soft: #9ed676;
-  --text: #e9f2e3;
-  --text-dim: #9aa892;
-  --text-faint: #67705f;
-  --radius: 14px;
-  --maxw: 1120px;
+  /* 一个"像素"字符的格子尺寸 —— 本项目未用像素画，保留与参考一致 */
+  --cell-w: 6px;
+  --cell-h: 13px;
+
+  --grid-size: 40px;
+  --grid-line: 1px;
+  --grid-color: #272727;
+
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-dim: #69707b;
+  --accent: #00d9ff;
+  --accent-2: #a78bfa;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,92 +31,86 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 body {
-  background-color: var(--bg);
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #000;
+  /* 40px 网格背景：两条 1px 渐变线拼出来的，不需要图片 */
+  background-image:
+    linear-gradient(to right, var(--grid-color) var(--grid-line), transparent 0),
+    linear-gradient(to bottom, var(--grid-color) var(--grid-line), transparent 0);
+  background-size: var(--grid-size) var(--grid-size);
+  background-attachment: fixed;
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.6;
+  font-family: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  user-select: none;
 }
 
-a {
+#app {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+a,
+a:hover,
+a:link,
+a:visited,
+a:active,
+a:focus {
   color: inherit;
   text-decoration: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  color: inherit;
 }
 
 button {
   font-family: inherit;
   cursor: pointer;
-  border: none;
-  background: none;
-  color: inherit;
 }
 
-.icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 0;
-}
-.icon svg {
+img {
   display: block;
+  max-width: 100%;
 }
 
-/* 通用区块容器 */
-.section {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 72px 24px;
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-track {
+  background: #010101;
 }
 
-.section-head {
-  text-align: center;
-  margin-bottom: 48px;
-}
-
-.section-title {
-  font-size: 30px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-}
-
-.section-sub {
-  color: var(--text-dim);
-  margin-top: 10px;
-  font-size: 15px;
-}
-
-/* 草绿主按钮 */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 26px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s;
-}
-.btn:active {
-  transform: scale(0.97);
-}
-.btn-primary {
-  background: var(--accent);
-  color: #0a1206;
-  box-shadow: 0 6px 24px rgba(124, 189, 75, 0.35);
-}
-.btn-primary:hover {
-  background: var(--accent-soft);
-}
-.btn-ghost {
-  background: var(--panel);
-  border: 1px solid var(--line);
-}
-.btn-ghost:hover {
-  border-color: var(--accent);
+/* 尊重系统"减弱动态效果"设置 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

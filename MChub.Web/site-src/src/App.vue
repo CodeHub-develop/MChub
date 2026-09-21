@@ -1,19 +1,21 @@
 <script setup>
-import SiteHeader from './components/SiteHeader.vue'
-import HeroSection from './components/HeroSection.vue'
-import FeaturesSection from './components/FeaturesSection.vue'
-import DownloadSection from './components/DownloadSection.vue'
-import OpenSourceSection from './components/OpenSourceSection.vue'
-import FooterView from './components/FooterView.vue'
+import LayoutView from './components/LayoutView.vue'
+import HeaderView from './components/HeaderView.vue'
+import ProjectsSection from './components/ProjectsSection.vue'
 </script>
 
 <template>
-  <SiteHeader />
-  <main>
-    <HeroSection />
-    <FeaturesSection />
-    <DownloadSection />
-    <OpenSourceSection />
-  </main>
-  <FooterView />
+  <div class="root">
+    <LayoutView>
+      <HeaderView />
+      <ProjectsSection />
+    </LayoutView>
+  </div>
 </template>
+
+<style scoped>
+.root {
+  width: 100%;
+  min-height: 100vh;
+}
+</style>

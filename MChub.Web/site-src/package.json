@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run fetch:release && vite build",
+    "build": "vite build",
     "fetch:release": "node tools/fetch-release.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "smoke": "node tools/smoke.mjs"
