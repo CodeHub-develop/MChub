@@ -1,0 +1,34 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--
+        字体归位（Tio → FluentAvalonia 迁移的一部分）
+
+        AlimamaFangYuanTi 原先由 TioUi 提供：avares://TioUi/Assets#AlimamaFangYuanTi。
+        现在字体文件已复制进本项目（src/MChub/Assets/Fonts/），MChub 自持，不再依赖 TioUi。
+
+        ⚠ 本文件必须排在 FluentAvaloniaTheme 之后：
+          TioUiTheme 与 FluentAvaloniaTheme 都定义了隐式 TextBlock 主题，
+          谁在后面谁生效。FA 在后面时会把默认字体替换成 FA 自带字体，
+          导致「部分文字字体变了」；把它换回来靠的就是下面这几条覆盖。
+    -->
+    <Styles.Resources>
+        <ResourceDictionary>
+            <!-- MChub 自有字体族名（供本项目代码/样式直接引用） -->
+            <FontFamily x:Key="MChubFontFamily">avares://MChub/Assets/Fonts#AlimamaFangYuanTi</FontFamily>
+
+            <!-- 兼容别名：Tio 的控件与样式内部仍以 TioFontFamily 取字体，
+                 指向本项目副本，使 Tio 主题可以逐步退场而不影响画面 -->
+            <FontFamily x:Key="TioFontFamily">avares://MChub/Assets/Fonts#AlimamaFangYuanTi</FontFamily>
+
+            <!-- FluentAvalonia 的控件模板通过这两个键取默认字体 -->
+            <FontFamily x:Key="ContentControlThemeFontFamily">avares://MChub/Assets/Fonts#AlimamaFangYuanTi</FontFamily>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+    <!-- 应用级 Style 的优先级高于任何 ControlTheme 里的 Setter，
+         用它把 FA 抢走的隐式 TextBlock 字体夺回来 -->
+    <Style Selector="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource MChubFontFamily}" />
+    </Style>
+</Styles>

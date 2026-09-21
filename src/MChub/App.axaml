@@ -29,6 +29,10 @@
             <Setter Property="InheritsTransform" Value="True" />
         </Style>
         <fluentAvalonia:FluentAvaloniaTheme />
+        <!-- 必须最后：把默认字体从 FA 自带的换回 MChub 自持的 AlimamaFangYuanTi -->
+        <StyleInclude Source="/Styles/Fonts.axaml" />
+        <!-- 必须最后：接管 TransparentButton，修掉被 Fluent 大内边距裁掉的图标 -->
+        <StyleInclude Source="/Styles/Buttons.axaml" />
     </Application.Styles>
     <NativeMenu.Menu>
         <NativeMenu>

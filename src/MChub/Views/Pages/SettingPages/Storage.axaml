@@ -59,7 +59,7 @@
                 </Grid>
 
                 <settingPages:StorageUsageChart
-                    FontFamily="{DynamicResource TioFontFamily}"
+                    FontFamily="{DynamicResource MChubFontFamily}"
                     Grid.Column="2"
                     Height="180"
                     Items="{Binding ChartItems}"

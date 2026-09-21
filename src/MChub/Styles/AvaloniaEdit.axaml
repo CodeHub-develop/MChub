@@ -5,7 +5,7 @@
     <Styles.Resources>
         <ResourceDictionary>
             <x:Double x:Key="ControlContentThemeFontSize">14</x:Double>
-            <FontFamily x:Key="ContentControlThemeFontFamily">avares://TioUi/Assets#AlimamaFangYuanTi</FontFamily>
+            <FontFamily x:Key="ContentControlThemeFontFamily">avares://MChub/Assets/Fonts#AlimamaFangYuanTi</FontFamily>
             <Thickness x:Key="ToolTipBorderThemeThickness">1</Thickness>
             <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="TextViewLinkTextForeground" />
             <ResourceDictionary.ThemeDictionaries>

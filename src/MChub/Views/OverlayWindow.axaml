@@ -1,7 +1,7 @@
 ﻿<Window
     Background="Transparent"
     CanResize="False"
-    FontFamily="{DynamicResource TioFontFamily}"
+    FontFamily="{DynamicResource MChubFontFamily}"
     FontSize="14"
     ShowInTaskbar="False"
     Title="MChub Overlay"

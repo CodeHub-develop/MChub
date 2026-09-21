@@ -1,0 +1,35 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--
+        TransparentButton 归 MChub 自持（Tio → FluentAvalonia 迁移的一部分）
+
+        原先这个键由 TioUi 提供，而 Tio 版本里只有一行：
+            <ControlTheme TargetType="Button" x:Key="TransparentButton">
+                <Setter Property="Cursor" Value="Hand" />
+            </ControlTheme>
+        它没有 Template、也没有 BasedOn —— 模板和度量全靠"隐式 Button 主题"补。
+        Tio 时代那套的度量是 Padding="12 0" / MinHeight="32"。
+
+        FluentAvaloniaTheme 排在后面接管了隐式 Button 主题后，按钮换成 Fluent 的度量，
+        26px 宽的关闭按钮被左右内边距吃掉二十多像素、内容区只剩几像素，
+        图标于是被裁成"两个点"或"一截"（新建标签的 + 同理）。
+
+        这里显式 BasedOn FluentAvalonia 的 Button 主题（不再是隐性借用），
+        并把图标按钮需要的内边距与最小尺寸归零 —— 按钮尺寸完全由使用处的
+        Width/Height 决定。
+        注意：使用处若显式写了 Padding（例：标题栏按钮 Padding="8,3,8,2"），
+        本地值优先，不受本主题影响。
+    -->
+    <Styles.Resources>
+        <ControlTheme
+            BasedOn="{StaticResource {x:Type Button}}"
+            TargetType="Button"
+            x:Key="TransparentButton">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="MinWidth" Value="0" />
+            <Setter Property="MinHeight" Value="0" />
+        </ControlTheme>
+    </Styles.Resources>
+</Styles>
