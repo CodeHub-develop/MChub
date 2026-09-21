@@ -33,8 +33,8 @@ export const site = {
 
   terminal: {
     // 命令本身不翻译，保持 whoami 才有终端味
-    command: 'whoami',
-    output: 'MChub',
+    command: 'mchub',
+    output: 'MChub-commit-2026-5-27',
     roles: {
       zh: ['开源启动器', '跨平台游戏管理'],
       en: ['Open-source launcher', 'Cross-platform game manager'],
