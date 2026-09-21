@@ -55,6 +55,29 @@ $env:CURSEFORGE_API_KEY = "your-key"
 
 没有这些可选密钥时，MChub 仍可编译；只有依赖对应服务或构建链的功能会不可用。
 
+### 凭据使用规则（Fork / 二次分发必读）
+
+密钥与它所服务的项目身份是绑定的。**Fork 本仓库、二次分发或改名发行时，必须二选一：**
+
+1. 将变量替换为**你自己申请**的 key / client ID；
+2. 或将其置为**空字符串 `""`** —— 对应功能会自动关闭，程序仍可正常构建与运行（这是被支持的用法）。
+
+沿用原仓库的凭据，等于以他人身份使用其配额，并使其承担上游条款的责任。
+
+使用这些凭据即表示接受以下条款：
+
+- [CurseForge 3rd Party API Terms and Conditions](https://support.curseforge.com/en/support/solutions/articles/9000207405-curse-forge-3rd-party-api-terms-and-conditions)
+- [Microsoft Identity Platform Terms of Use](https://docs.microsoft.com/en-us/legal/microsoft-identity-platform/terms-of-use)
+
+提交前自检（应无输出）：
+
+```bash
+git grep -nE '\$2a\$10\$|client_id\s*=\s*"?[0-9a-f]{8}-'
+```
+
+> 完整的凭据与安全策略见 [SECURITY.md](SECURITY.md)，其中包括「客户端二进制内含可提取凭据」
+> 这一**已公开披露的取舍**及其后果。
+
 ## 4. 构建和运行
 
 在仓库根目录执行：
