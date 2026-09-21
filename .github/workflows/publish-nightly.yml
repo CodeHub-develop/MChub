@@ -61,6 +61,7 @@ jobs:
       PRE_MC_KEY: ${{ secrets.PRE_MC_KEY }}
       REL_MC_KEY: ${{ secrets.REL_MC_KEY }}
     strategy:
+      fail-fast: false
       matrix:
         include:
           - kind: appimage
@@ -139,6 +140,7 @@ jobs:
       PRE_MC_KEY: ${{ secrets.PRE_MC_KEY }}
       REL_MC_KEY: ${{ secrets.REL_MC_KEY }}
     strategy:
+      fail-fast: false
       matrix:
         include:
           - runtime: win-x64
@@ -200,6 +202,7 @@ jobs:
       PRE_MC_KEY: ${{ secrets.PRE_MC_KEY }}
       REL_MC_KEY: ${{ secrets.REL_MC_KEY }}
     strategy:
+      fail-fast: false
       matrix:
         include:
           - runtime: win-x64
@@ -266,6 +269,7 @@ jobs:
       PRE_MC_KEY: ${{ secrets.PRE_MC_KEY }}
       REL_MC_KEY: ${{ secrets.REL_MC_KEY }}
     strategy:
+      fail-fast: false
       matrix:
         rid: [osx-x64, osx-arm64]
         include:
@@ -300,7 +304,13 @@ jobs:
             osx-arm64) ARCH="arm64" ;;
             *)         echo "未知 RID: ${{ matrix.rid }}" >&2; exit 1 ;;
           esac
-          ASSET="dotnet-codenet-osx-${ARCH}.tar.gz"
+          # arm64 固定取 -fixed 备份：CodeNet 的 build-codenet 作业会以同名
+          # dotnet-codenet-osx-arm64.tar.gz 覆盖发出「平铺运行时库」包（不含
+          # dotnet11x64/ SDK 布局），而 -fixed 才是带 SDK 的可用资产。
+          case "${ARCH}" in
+            arm64) ASSET="dotnet-codenet-osx-arm64-fixed.tar.gz" ;;
+            *)     ASSET="dotnet-codenet-osx-${ARCH}.tar.gz" ;;
+          esac
           DEST="$RUNNER_TEMP/codenet"
           mkdir -p "$DEST"
           echo "从 Open-code-Studio/CodeNet 发布下载定制版 .NET SDK (sdk-v${CODENET_VER}, ${ARCH}) ..."
