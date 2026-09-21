@@ -33,17 +33,8 @@
 | **macOS Apple Silicon** | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.osx.mac.arm64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.osx.mac.arm64.app.zip) | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.osx.mac.arm64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.osx.mac.arm64.app.zip) | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.osx.mac.arm64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.osx.mac.arm64.app.zip) |
 | **macOS Intel**         | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.osx.mac.x64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.osx.mac.x64.app.zip) | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.osx.mac.x64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.osx.mac.x64.app.zip) | [磁盘映像](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.osx.mac.x64.dmg) / [应用包](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.osx.mac.x64.app.zip) |
 | **Linux x64**           | [AppImage](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.linux.x64.AppImage) / [deb包](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.linux.x64.deb) / [rpm包](https://github.com/CodeHub-develop/MChub/releases/latest/download/MChub.linux.x64.rpm) | [AppImage](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.linux.x64.AppImage) / [deb包](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.linux.x64.deb) / [rpm包](https://github.com/CodeHub-develop/MChub/releases/download/publish-commit/MChub.linux.x64.rpm) | [AppImage](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.linux.x64.AppImage) / [deb包](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.linux.x64.deb) / [rpm包](https://github.com/CodeHub-develop/MChub/releases/download/publish-nightly/MChub.linux.x64.rpm) |
-| **Arch Linux / AUR**    | [mchub-bin](https://aur.archlinux.org/packages/mchub-bin)                                    | [mchub-commit-bin](https://aur.archlinux.org/packages/mchub-commit-bin)                                    | [mchub-nightly-bin](https://aur.archlinux.org/packages/mchub-nightly-bin)                                    |
 
 > [!NOTE]
-> Arch Linux 用户可以通过 [aur](https://aur.archlinux.org) 安装
->
-> ```bash
-> yay -S mchub-bin                  # 正式版
-> yay -S mchub-commit-bin           # commit 版本
-> yay -S mchub-nightly-bin          # nightly 版本
-> ```
->
 > MacOS 首次打开 MChub 前，请先将 `MChub.app` 移动到“应用程序”文件夹，然后在终端运行以下命令：
 > ```bash
 > sudo xattr -rd com.apple.quarantine /Applications/MChub.app
