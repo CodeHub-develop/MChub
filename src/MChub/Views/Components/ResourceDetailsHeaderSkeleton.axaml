@@ -2,11 +2,12 @@
     x:Class="MChub.Views.Components.ResourceDetailsHeaderSkeleton"
     xmlns="https://github.com/avaloniaui"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:fa="using:FluentAvalonia.UI.Controls"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="2,0,0,0">
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
-                <tio:Skeleton
+                <fa:FASkeleton
                     CornerRadius="14"
                     DockPanel.Dock="Left"
                     Height="72"
@@ -14,21 +15,21 @@
                     IsLoading="True"
                     Width="72" />
                 <StackPanel Margin="12,5,12,0" Spacing="7">
-                    <tio:Skeleton
+                    <fa:FASkeleton
                         CornerRadius="4"
                         Height="22"
                         HorizontalAlignment="Left"
                         IsActive="True"
                         IsLoading="True"
                         Width="230" />
-                    <tio:Skeleton
+                    <fa:FASkeleton
                         CornerRadius="3"
                         Height="14"
                         HorizontalAlignment="Left"
                         IsActive="True"
                         IsLoading="True"
                         Width="150" />
-                    <tio:Skeleton
+                    <fa:FASkeleton
                         CornerRadius="3"
                         Height="14"
                         HorizontalAlignment="Left"
@@ -41,13 +42,13 @@
                 DockPanel.Dock="Top"
                 Margin="2,8,0,0"
                 Spacing="6">
-                <tio:Skeleton
+                <fa:FASkeleton
                     CornerRadius="3"
                     Height="14"
                     HorizontalAlignment="Stretch"
                     IsActive="True"
                     IsLoading="True" />
-                <tio:Skeleton
+                <fa:FASkeleton
                     CornerRadius="3"
                     Height="14"
                     HorizontalAlignment="Left"
@@ -60,19 +61,19 @@
                 Margin="2,9,0,0"
                 Orientation="Horizontal"
                 Spacing="5">
-                <tio:Skeleton
+                <fa:FASkeleton
                     CornerRadius="12"
                     Height="24"
                     IsActive="True"
                     IsLoading="True"
                     Width="72" />
-                <tio:Skeleton
+                <fa:FASkeleton
                     CornerRadius="12"
                     Height="24"
                     IsActive="True"
                     IsLoading="True"
                     Width="58" />
-                <tio:Skeleton
+                <fa:FASkeleton
                     CornerRadius="12"
                     Height="24"
                     IsActive="True"

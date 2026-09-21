@@ -6,6 +6,7 @@
     x:DataType="account:MicrosoftAccountViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:account="clr-namespace:MChub.Views.Components.Operations.Account"
+    xmlns:fa="using:FluentAvalonia.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
@@ -40,7 +41,7 @@
                 </Border>
             </Border>
             <Border IsVisible="{Binding !IsAuthing}">
-                <tio:Skeleton
+                <fa:FASkeleton
                     CornerRadius="10"
                     Height="80"
                     IsActive="True"
@@ -57,7 +58,7 @@
                             Text="{Binding Code}"
                             VerticalAlignment="Center" />
                     </Border>
-                </tio:Skeleton>
+                </fa:FASkeleton>
             </Border>
             <TextBlock
                 Foreground="Red"

@@ -6,6 +6,7 @@
     x:DataType="account:BedrockMicrosoftViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:account="clr-namespace:MChub.Views.Components.Operations.Account"
+    xmlns:fa="using:FluentAvalonia.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
@@ -26,7 +27,7 @@
                 IsVisible="{Binding IsReady}"
                 Margin="0,8,0,12"
                 Text="{Binding Url}" />
-            <tio:Skeleton
+            <fa:FASkeleton
                 Height="80"
                 IsLoading="{Binding !IsReady}"
                 IsVisible="{Binding !IsError}"
@@ -39,7 +40,7 @@
                         Text="{Binding Code}"
                         VerticalAlignment="Center" />
                 </Border>
-            </tio:Skeleton>
+            </fa:FASkeleton>
             <TextBlock
                 Foreground="Red"
                 IsVisible="{Binding IsError}"

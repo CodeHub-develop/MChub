@@ -2,6 +2,7 @@
     x:Class="MChub.Views.Components.GameVersionSkeleton"
     xmlns="https://github.com/avaloniaui"
     xmlns:components="clr-namespace:MChub.Views.Components"
+    xmlns:fa="using:FluentAvalonia.UI.Controls"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ItemsRepeater ItemsSource="{x:Static components:GameVersionSkeleton.Items}">
@@ -29,20 +30,20 @@
                                 HorizontalAlignment="Right"
                                 Orientation="Horizontal"
                                 Spacing="6">
-                                <tio:Skeleton
+                                <fa:FASkeleton
                                     CornerRadius="8"
                                     Height="20"
                                     IsActive="True"
                                     IsLoading="True"
                                     Width="48" />
-                                <tio:Skeleton
+                                <fa:FASkeleton
                                     CornerRadius="8"
                                     Height="20"
                                     IsActive="True"
                                     IsLoading="True"
                                     Width="42" />
                             </StackPanel>
-                            <tio:Skeleton
+                            <fa:FASkeleton
                                 CornerRadius="4"
                                 Height="15"
                                 HorizontalAlignment="Left"
@@ -51,7 +52,7 @@
                                 VerticalAlignment="Center"
                                 Width="105" />
                         </DockPanel>
-                        <tio:Skeleton
+                        <fa:FASkeleton
                             CornerRadius="3"
                             Height="12"
                             HorizontalAlignment="Left"

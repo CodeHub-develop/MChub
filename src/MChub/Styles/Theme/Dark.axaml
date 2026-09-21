@@ -14,6 +14,10 @@
                 Opacity="0.3"
                 x:Key="TabSelected" />
             <BoxShadows x:Key="PopupBoxShadow">0 0 8 1 #35000000</BoxShadows>
+            <!-- Skeleton 占位 Fluent 化：统一用中性深灰底，平滑主题过渡 -->
+            <SolidColorBrush Color="#1C1F23" x:Key="SkeletonDefaultBackground" />
+            <SolidColorBrush Color="#24272B" x:Key="SkeletonStartAnimationBackground" />
+            <SolidColorBrush Color="#2E3238" x:Key="SkeletonEndAnimationBackground" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

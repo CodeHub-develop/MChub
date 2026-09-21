@@ -2,6 +2,7 @@
     x:Class="MChub.Views.Components.ResourceVersionsSkeleton"
     xmlns="https://github.com/avaloniaui"
     xmlns:components="clr-namespace:MChub.Views.Components"
+    xmlns:fa="using:FluentAvalonia.UI.Controls"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel>
@@ -10,13 +11,13 @@
             Margin="0,0,0,10"
             Orientation="Horizontal"
             Spacing="6">
-            <tio:Skeleton
+            <fa:FASkeleton
                 CornerRadius="6"
                 Height="32"
                 IsActive="True"
                 IsLoading="True"
                 Width="150" />
-            <tio:Skeleton
+            <fa:FASkeleton
                 CornerRadius="6"
                 Height="32"
                 IsActive="True"
@@ -35,7 +36,7 @@
                         Margin="0,0,0,10"
                         Padding="14,0">
                         <Panel>
-                            <tio:Skeleton
+                            <fa:FASkeleton
                                 CornerRadius="3"
                                 Height="13"
                                 HorizontalAlignment="Right"
@@ -43,7 +44,7 @@
                                 IsLoading="True"
                                 VerticalAlignment="Center"
                                 Width="62" />
-                            <tio:Skeleton
+                            <fa:FASkeleton
                                 CornerRadius="4"
                                 Height="15"
                                 HorizontalAlignment="Left"
