@@ -105,7 +105,7 @@
             Fill="{DynamicResource TranslucentBorderBrush}"
             Height="1"
             Margin="0,0,0,12" />
-        <tio:ScrollView Classes="Flat">
+        <ScrollViewer Classes="Flat">
             <StackPanel Margin="0,0,7,0">
                 <StackPanel IsVisible="{Binding HasRecentPlays}">
                     <StackPanel Margin="0,0,0,12" Spacing="8">
@@ -170,6 +170,6 @@
                     </Panel>
                 </StackPanel>
             </StackPanel>
-        </tio:ScrollView>
+        </ScrollViewer>
     </DockPanel>
 </UserControl>

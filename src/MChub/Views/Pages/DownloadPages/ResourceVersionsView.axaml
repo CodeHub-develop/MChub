@@ -43,7 +43,7 @@
             </ComboBox>
         </StackPanel>
         <Grid>
-            <tio:ScrollView
+            <ScrollViewer
                 HorizontalScrollBarVisibility="Disabled"
                 IsVisible="{Binding !IsLoading}"
                 VerticalScrollBarVisibility="Auto">
@@ -123,7 +123,7 @@
                         IsVisible="{Binding HasMoreVersionGroups}"
                         Margin="0,0,0,10" />
                 </StackPanel>
-            </tio:ScrollView>
+            </ScrollViewer>
             <owned:ResourceVersionsSkeleton IsVisible="{Binding IsLoading}" />
             <TextBlock
                 Foreground="{DynamicResource InnerForegroundColor}"

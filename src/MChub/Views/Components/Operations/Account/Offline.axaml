@@ -7,6 +7,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:account="clr-namespace:MChub.Views.Components.Operations.Account"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="using:FluentAvalonia.UI.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:loc="using:MChub.Localization">
@@ -45,16 +46,14 @@
                             <TextBox PlaceholderText="Uuid" Text="{Binding Uuid}" />
                         </DataValidationErrors>
                     </tio:FormItem>
-                    <tio:Banner
-                        Classes="Bordered"
-                        Content="{Translate {x:Static loc:ComponentsLanguageManager+Keys.offline_uuidWarning}}"
+                    <fa:FAInfoBar
                         CornerRadius="10"
+                        IsClosable="False"
+                        IsOpen="True"
                         Margin="15,0,15,15"
-                        Type="Warning">
-                        <tio:Banner.Header>
-                            <TextBlock FontSize="15" Text="{Translate {x:Static loc:ComponentsLanguageManager+Keys.offline_warningHeader}}" />
-                        </tio:Banner.Header>
-                    </tio:Banner>
+                        Message="{Translate {x:Static loc:ComponentsLanguageManager+Keys.offline_uuidWarning}}"
+                        Severity="Warning"
+                        Title="{Translate {x:Static loc:ComponentsLanguageManager+Keys.offline_warningHeader}}" />
                 </StackPanel>
             </Expander>
         </tio:Form>

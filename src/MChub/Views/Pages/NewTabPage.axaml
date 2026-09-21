@@ -19,7 +19,7 @@
             <Setter Property="ShowQuickPlayWhenPossible" Value="False" />
         </Style>
     </UserControl.Styles>
-    <tio:ScrollView Classes="Flat" Margin="12,2,5,10">
+    <ScrollViewer Classes="Flat" Margin="12,2,5,10">
         <StackPanel Margin="0,0,7,0" Spacing="0">
             <Grid Name="LayoutGrid" VerticalAlignment="Top">
                     <Border
@@ -412,7 +412,7 @@
                                 Margin="10"
                                 ShowTitleIcon="True" />
                             <Panel>
-                                <tio:ScrollView
+                                <ScrollViewer
                                     Background="Transparent"
                                     Classes="Flat"
                                     DockPanel.Dock="Bottom"
@@ -446,7 +446,7 @@
                                             </DataTemplate>
                                         </ItemsRepeater.ItemTemplate>
                                     </ItemsRepeater>
-                                </tio:ScrollView>
+                                </ScrollViewer>
                                 <Panel
                                     HorizontalAlignment="Center"
                                     IsVisible="{Binding !HasFilteredInstances}"
@@ -500,5 +500,5 @@
                 </StackPanel>
             </Border>
         </StackPanel>
-    </tio:ScrollView>
+    </ScrollViewer>
 </UserControl>
