@@ -350,22 +350,16 @@ jobs:
         run: |
           set -euo pipefail
           CODENET_VER="10.0.400"
-          # 根据目标 RID 选择对应架构的 SDK
-          case "${{ matrix.rid }}" in
-            osx-x64)   ARCH="x64" ;;
-            osx-arm64) ARCH="arm64" ;;
-            *)         echo "未知 RID: ${{ matrix.rid }}" >&2; exit 1 ;;
-          esac
-          # arm64 固定取 -fixed 备份：CodeNet 的 build-codenet 作业会以同名
-          # dotnet-codenet-osx-arm64.tar.gz 覆盖发出「平铺运行时库」包（不含
-          # dotnet11x64/ SDK 布局），而 -fixed 才是带 SDK 的可用资产。
-          case "${ARCH}" in
-            arm64) ASSET="dotnet-codenet-osx-arm64-fixed.tar.gz" ;;
-            *)     ASSET="dotnet-codenet-osx-${ARCH}.tar.gz" ;;
-          esac
+          # 统一用 x64 SDK 交叉构建（含 osx-arm64）：
+          # arm64 的 CodeNet SDK 在 macOS 26 arm64 runner 上 signalfix 有竞态，
+          # dotnet restore -r osx-arm64 概率性 Segmentation fault 139（实测 run 35596627434）。
+          # x64 SDK 稳定，且其 packs 里自带 signalfix 版 arm64 原生库
+          # （libcoreclr 6144016 / libclrjit 3061968 / libclrgc 882208 / libclrgcexp 960800），
+          # 因此 x64 宿主交叉构建出的 arm64 产物同样是修复版。x64 宿主在 arm64 runner 上可运行（有 Rosetta）。
+          ASSET="dotnet-codenet-osx-x64.tar.gz"
           DEST="$RUNNER_TEMP/codenet"
           mkdir -p "$DEST"
-          echo "从 Open-code-Studio/CodeNet 发布下载定制版 .NET SDK (sdk-v${CODENET_VER}, ${ARCH}) ..."
+          echo "从 Open-code-Studio/CodeNet 发布下载定制版 .NET SDK (sdk-v${CODENET_VER}, x64 → 交叉构建 ${{ matrix.rid }}) ..."
           gh release download "sdk-v${CODENET_VER}" -R Open-code-Studio/CodeNet -p "$ASSET" -D "$DEST"
           tar xzf "$DEST/$ASSET" -C "$DEST"
           echo "DOTNET_ROOT=$DEST/dotnet11x64" >> "$GITHUB_ENV"
