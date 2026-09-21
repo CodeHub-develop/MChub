@@ -113,6 +113,19 @@ public partial class ConfigEntry : ObservableObject
     [ObservableProperty] public partial Color ImageMaskColor { get; set; } = Color.Parse("#000000");
     [ObservableProperty] public partial double ImageMaskOpacity { get; set; } = 0.3;
     [ObservableProperty] public partial bool ShowWidgetBackground { get; set; } = true;
+    /// <summary>
+    /// 是否让 UI 元件（标题栏/标签栏、侧边导航、弹出菜单、卡片等）使用磨砂玻璃材质。
+    /// 关闭后退化为纯半透明底色（低性能设备或用户不想看模糊时使用）。
+    /// </summary>
+    [ObservableProperty] public partial bool EnableSurfaceAcrylic { get; set; } = true;
+    /// <summary>
+    /// UI 磨砂玻璃的着色不透明度：越小越透（磨砂感越强）。
+    /// </summary>
+    [ObservableProperty] public partial double SurfaceAcrylicOpacity { get; set; } = 0.5;
+    /// <summary>
+    /// UI 磨砂玻璃的着色。跟随主题时可留空（空 = 由控件按主题自动取色）。
+    /// </summary>
+    [ObservableProperty] public partial Color SurfaceAcrylicTintColor { get; set; } = Colors.Transparent;
     [ObservableProperty] public partial double AppScale { get; set; } = 1.0;
     [ObservableProperty] public partial double TabWindowWidth { get; set; }
     [ObservableProperty] public partial double TabWindowHeight { get; set; }

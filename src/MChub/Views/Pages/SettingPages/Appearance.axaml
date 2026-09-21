@@ -198,6 +198,38 @@
                 <ComboBoxItem Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_backgroundTransparent}}" />
             </ComboBox>
         </StackPanel>
+        <!-- UI 磨砂玻璃：不随背景模式变化，任何模式都可生效；改动实时绑定配置 -->
+        <StackPanel Spacing="5">
+            <Label
+                Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_surfaceAcrylic}}"
+                FontSize="13"
+                Foreground="{DynamicResource InnerForegroundColor}" />
+            <ToggleSwitch IsChecked="{Binding EnableSurfaceAcrylic, Source={x:Static const1:Data.ConfigEntry}}" />
+            <TextBlock
+                FontSize="12"
+                Foreground="{DynamicResource InnerForegroundColor}"
+                Text="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_surfaceAcrylicDescription}}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel IsVisible="{Binding EnableSurfaceAcrylic, Source={x:Static const1:Data.ConfigEntry}}" Spacing="5">
+            <Label
+                Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_surfaceAcrylicOpacity}}"
+                FontSize="13"
+                Foreground="{DynamicResource InnerForegroundColor}" />
+            <Grid ColumnDefinitions="*,Auto">
+                <Slider
+                    Grid.Column="0"
+                    Maximum="1.0"
+                    Minimum="0.0"
+                    Value="{Binding SurfaceAcrylicOpacity, Source={x:Static const1:Data.ConfigEntry}}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Margin="6,0,0,0"
+                    Text="{Binding SurfaceAcrylicOpacity, Source={x:Static const1:Data.ConfigEntry}, StringFormat={}{0:P0}}"
+                    VerticalAlignment="Center"
+                    Width="40" />
+            </Grid>
+        </StackPanel>
         <StackPanel IsVisible="{Binding BackgroundMode, Source={x:Static const1:Data.ConfigEntry}, Converter={StaticResource BackgroundModeCompareConverter}, ConverterParameter='SolidColor'}" Spacing="5">
             <Label
                 Content="{Translate {x:Static loc:SettingsLanguageManager+Keys.appearance_backgroundColor}}"

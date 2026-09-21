@@ -130,6 +130,10 @@ public partial class ConfigEntry : ObservableObject
             case nameof(CustomWindowBorderCornerRadius):
             case nameof(EnableManagedWindowBorderOnWindows):
             case nameof(EnableManagedWindowDecorationsOnWindows):
+            // UI 磨砂玻璃：改动后需要重建各窗口上的磨砂层
+            case nameof(EnableSurfaceAcrylic):
+            case nameof(SurfaceAcrylicOpacity):
+            case nameof(SurfaceAcrylicTintColor):
                 UiEvents.RaiseBackgroundAppearanceChanged();
                 break;
             case nameof(EnableImageMask):

@@ -1,6 +1,11 @@
 {
   "appearance": {
     "title": "界面外观",
+    "surfaceAcrylic": "磨砂玻璃",
+    "surfaceAcrylicEnable": "为界面元件启用磨砂玻璃",
+    "surfaceAcrylicDescription": "标题栏与标签栏、侧边导航、弹出菜单、卡片等界面元件使用亚克力材质；关闭后仅保留半透明底色",
+    "surfaceAcrylicOpacity": "磨砂程度",
+    "surfaceAcrylicTintColor": "磨砂着色",
     "themeStyle": "主题样式",
     "themeSystem": "系统",
     "themeLight": "浅色",
