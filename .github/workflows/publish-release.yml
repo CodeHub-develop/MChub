@@ -125,15 +125,14 @@ jobs:
             runtime: linux-arm64
             output: MChub.linux.arm64.rpm
     steps:
-      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
-      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages。该源即使包是公开的也要求认证
+      # （实测匿名请求服务索引与包下载均 401），所以每个会还原的作业都要先配好凭据。
+      # 显式指定 bash：Windows runner 默认 PowerShell，续行符 \ 会被判为语法错误，
+      # 因此这里写成单行，三种系统下行为一致。
       - name: Configure NuGet (GitHub Packages)
-        run: |
-          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
-            --username "${{ github.actor }}" \
-            --password "${{ secrets.GITHUB_TOKEN }}" \
-            --store-password-in-clear-text \
-            --name codehub-gh
+        shell: bash
+        run: |-
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" --username "${{ github.actor }}" --password "${{ secrets.GITHUB_TOKEN }}" --store-password-in-clear-text --name codehub-gh
 
       - name: Checkout
         uses: actions/checkout@v7
@@ -189,25 +188,14 @@ jobs:
           - runtime: win-arm64
             arch: arm64
     steps:
-      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
-      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages。该源即使包是公开的也要求认证
+      # （实测匿名请求服务索引与包下载均 401），所以每个会还原的作业都要先配好凭据。
+      # 显式指定 bash：Windows runner 默认 PowerShell，续行符 \ 会被判为语法错误，
+      # 因此这里写成单行，三种系统下行为一致。
       - name: Configure NuGet (GitHub Packages)
-        run: |
-          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
-            --username "${{ github.actor }}" \
-            --password "${{ secrets.GITHUB_TOKEN }}" \
-            --store-password-in-clear-text \
-            --name codehub-gh
-
-      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
-      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
-      - name: Configure NuGet (GitHub Packages)
-        run: |
-          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
-            --username "${{ github.actor }}" \
-            --password "${{ secrets.GITHUB_TOKEN }}" \
-            --store-password-in-clear-text \
-            --name codehub-gh
+        shell: bash
+        run: |-
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" --username "${{ github.actor }}" --password "${{ secrets.GITHUB_TOKEN }}" --store-password-in-clear-text --name codehub-gh
 
       - name: Checkout code
         uses: actions/checkout@v7
@@ -266,15 +254,14 @@ jobs:
           - runtime: win-arm64
             arch: arm64
     steps:
-      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
-      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages。该源即使包是公开的也要求认证
+      # （实测匿名请求服务索引与包下载均 401），所以每个会还原的作业都要先配好凭据。
+      # 显式指定 bash：Windows runner 默认 PowerShell，续行符 \ 会被判为语法错误，
+      # 因此这里写成单行，三种系统下行为一致。
       - name: Configure NuGet (GitHub Packages)
-        run: |
-          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
-            --username "${{ github.actor }}" \
-            --password "${{ secrets.GITHUB_TOKEN }}" \
-            --store-password-in-clear-text \
-            --name codehub-gh
+        shell: bash
+        run: |-
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" --username "${{ github.actor }}" --password "${{ secrets.GITHUB_TOKEN }}" --store-password-in-clear-text --name codehub-gh
 
       - name: Checkout code
         uses: actions/checkout@v7
@@ -339,25 +326,14 @@ jobs:
           - rid: osx-arm64
             dmg_arch: arm64
     steps:
-      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
-      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages。该源即使包是公开的也要求认证
+      # （实测匿名请求服务索引与包下载均 401），所以每个会还原的作业都要先配好凭据。
+      # 显式指定 bash：Windows runner 默认 PowerShell，续行符 \ 会被判为语法错误，
+      # 因此这里写成单行，三种系统下行为一致。
       - name: Configure NuGet (GitHub Packages)
-        run: |
-          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
-            --username "${{ github.actor }}" \
-            --password "${{ secrets.GITHUB_TOKEN }}" \
-            --store-password-in-clear-text \
-            --name codehub-gh
-
-      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
-      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
-      - name: Configure NuGet (GitHub Packages)
-        run: |
-          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
-            --username "${{ github.actor }}" \
-            --password "${{ secrets.GITHUB_TOKEN }}" \
-            --store-password-in-clear-text \
-            --name codehub-gh
+        shell: bash
+        run: |-
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" --username "${{ github.actor }}" --password "${{ secrets.GITHUB_TOKEN }}" --store-password-in-clear-text --name codehub-gh
 
       - name: Checkout
         uses: actions/checkout@v7
