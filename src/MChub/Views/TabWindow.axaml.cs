@@ -45,6 +45,9 @@ namespace MChub.Views;
 
 public partial class TabWindow : TioTabWindowBase
 {
+    /// <summary>标题栏行高，与 TabWindow.axaml 中 TitleBarThings 的高度保持一致。</summary>
+    private const double TitleBarHeight = 44;
+
     private Image? _backgroundImageLayer;
     private Border? _backgroundMaskLayer;
     private string? _cachedBackgroundPath;
@@ -57,9 +60,7 @@ public partial class TabWindow : TioTabWindowBase
 
 
     private bool _hideDropTipScheduled;
-    private bool _isConfigEntrySubscribed;
     private string? _lastDragMessage;
-    private IntPtr _macOsWindowHandle;
 
     public TabWindow()
     {
@@ -100,6 +101,7 @@ public partial class TabWindow : TioTabWindowBase
     {
         _hideDropTipDebouncer = new Debouncer(OnHideDropTipDebounce, 300);
         InitializeComponent();
+        ConfigureChrome();
 
 
         if (Data.ConfigEntry.HasTabWindowSize)
@@ -209,36 +211,7 @@ public partial class TabWindow : TioTabWindowBase
     {
         Closed += TabWindow_OnClosed;
 
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            var platform = TryGetPlatformHandle();
-            if (platform is null) return;
-            var nsWindow = platform.Handle;
-            if (nsWindow == IntPtr.Zero) return;
-            _macOsWindowHandle = nsWindow;
-            Loaded += (_, _) => { MacOsWindowHandler(nsWindow); };
-            PropertyChanged += (_, e) =>
-            {
-                if (e.PropertyName != nameof(WindowState)) return;
-                MacOsWindowHandler(nsWindow);
-            };
-            SizeChanged += (_, _) => { MacOsWindowHandler(nsWindow); };
-            Data.ConfigEntry.PropertyChanged += ConfigEntry_OnPropertyChanged;
-            _isConfigEntrySubscribed = true;
-            TitleBarThings.SizeChanged += (_, _) =>
-            {
-                NavScrollViewer.Margin =
-                    new Thickness(TitleBarLogo.Bounds.Width + 86, 0, TitleBarThings.Bounds.Width + 15 + 30, 0);
-            };
-        }
-        else
-        {
-            TitleBarThings.SizeChanged += (_, _) =>
-            {
-                NavScrollViewer.Margin = new Thickness(TitleBarLogo.Bounds.Width + 3, 0,
-                    90 + 30 + TitleBarThings.Bounds.Width, 0);
-            };
-        }
+        UpdateChromeInsets();
 
         NavScrollViewer.ScrollChanged += (_, _) => { IsTabMaskVisible = NavScrollViewer.Offset.X > 0; };
         SizeChanged += TabWindow_OnSizeChanged;
@@ -249,50 +222,70 @@ public partial class TabWindow : TioTabWindowBase
             ScalingChanged += TabWindow_OnScalingChanged;
             ActualThemeVariantChanged += TabWindow_OnActualThemeVariantChanged;
         }
-        return;
-
-        void MacOsWindowHandler(IntPtr nsWindow)
-        {
-            try
-            {
-                TioUi.Common.Helpers.MacOsWindowHandler.RefreshTitleBarButtonPosition(nsWindow, 16, -3,
-                    23);
-            }
-            catch (Exception exception)
-            {
-                Logger.Error(exception);
-            }
-        }
     }
 
-    private void ConfigEntry_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    /// <summary>
+    /// 标题栏 chrome 交给 FluentAvalonia + Avalonia 两层共同管理：
+    /// 1. FA 层 TitleBar.ExtendsContentIntoTitleBar：由 FA 负责标题栏 chrome 与系统按钮；
+    /// 2. Avalonia 层 ExtendClientAreaToDecorationsHint：真正把客户区延伸进窗口装饰
+    ///    （macOS 上即隐藏原生标题栏，让自绘标题栏行 + 标签条顶到窗口顶端）。
+    /// 只设第 1 项时原生标题栏依然存在，标签栏看起来仍像在标题栏下方。
+    /// </summary>
+    private void ConfigureChrome()
     {
-        if (e.PropertyName != nameof(Data.ConfigEntry.Theme) || _macOsWindowHandle == IntPtr.Zero)
-            return;
+        if (TitleBar is not null)
+        {
+            TitleBar.ExtendsContentIntoTitleBar = true;
+            TitleBar.Height = TitleBarHeight;
+        }
 
-        try
+        ExtendClientAreaToDecorationsHint = true;
+        ExtendClientAreaTitleBarHeightHint = TitleBarHeight;
+    }
+
+    /// <summary>
+    /// 标签栏与标题栏同处一行，左侧给系统红绿灯留出占位（三列 Grid 的第一列）。
+    /// 右侧由 Grid 的 Auto 列自动避让标题栏组件，不再手工算边距 —— 手工算曾导致
+    /// 内缩超过窗口宽度、标签条被压成 0 宽。
+    /// </summary>
+    private void UpdateChromeInsets()
+    {
+        SystemChromeSpacer.Width = SystemChromeLeftInset();
+    }
+
+    /// <summary>
+    /// 标题栏拖动：标题条空白区域按下即拖动窗口，双击在最大化/还原之间切换。
+    /// 标签条叠在同一行，标签自身仍按正常点击处理。
+    /// </summary>
+    private void OnTitleBarDragSurfacePointerPressed(object? sender, PointerPressedEventArgs e)
+    {
+        var point = e.GetCurrentPoint(this);
+        if (!point.Properties.IsLeftButtonPressed) return;
+
+        if (e.ClickCount == 2)
         {
-            MacOsWindowHandler.RefreshTitleBarButtonPosition(_macOsWindowHandle, 16, -3,
-                23);
+            WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            return;
         }
-        catch (Exception exception)
-        {
-            Logger.Error(exception);
-        }
+
+        BeginMoveDrag(e);
+    }
+
+    /// <summary>
+    /// macOS 扩展客户区时，系统红绿灯占用的左侧宽度由平台提供（WindowDecorationMargin）；
+    /// 取不到时退回经验值，避免标签条压到红绿灯上。
+    /// </summary>
+    private double SystemChromeLeftInset()
+    {
+        var fromPlatform = WindowDecorationMargin.Left;
+        if (fromPlatform > 0) return fromPlatform;
+        return OperatingSystem.IsMacOS() ? 70 : 3;
     }
 
     private void TabWindow_OnClosed(object? sender, EventArgs e)
     {
-        if (_isConfigEntrySubscribed)
-        {
-            Data.ConfigEntry.PropertyChanged -= ConfigEntry_OnPropertyChanged;
-            _isConfigEntrySubscribed = false;
-        }
-
         // Stop detached multiplayer daemons (Terracotta) before the app exits.
         _ = TerracottaMultiplayerService.Instance.StopAsync();
-
-        _macOsWindowHandle = IntPtr.Zero;
 
 
         TabSelectionList.DisableTabDragDrop();
@@ -584,6 +577,16 @@ public partial class TabWindow : TioTabWindowBase
     public void ApplyBackground()
     {
         var entry = Data.ConfigEntry;
+
+        // UI 磨砂玻璃：标题栏 / 标签栏那一行（做成独立层，开关与强度直接取配置）
+        if (TitleBarAcrylic is not null)
+        {
+            TitleBarAcrylic.IsAcrylicEnabled = entry.EnableSurfaceAcrylic;
+            TitleBarAcrylic.TintOpacity = entry.SurfaceAcrylicOpacity;
+            if (entry.SurfaceAcrylicTintColor != Colors.Transparent)
+                TitleBarAcrylic.TintColor = entry.SurfaceAcrylicTintColor;
+        }
+
         var useManagedCompositionMaterial = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) &&
                                             entry.EnableManagedWindowDecorationsOnWindows &&
                                             entry.BackgroundMode is BackgroundMode.Acrylic or BackgroundMode.Mica;
