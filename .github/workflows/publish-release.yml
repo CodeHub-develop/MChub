@@ -125,6 +125,16 @@ jobs:
             runtime: linux-arm64
             output: MChub.linux.arm64.rpm
     steps:
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
+      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      - name: Configure NuGet (GitHub Packages)
+        run: |
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
+            --username "${{ github.actor }}" \
+            --password "${{ secrets.GITHUB_TOKEN }}" \
+            --store-password-in-clear-text \
+            --name codehub-gh
+
       - name: Checkout
         uses: actions/checkout@v7
         with:
@@ -179,6 +189,26 @@ jobs:
           - runtime: win-arm64
             arch: arm64
     steps:
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
+      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      - name: Configure NuGet (GitHub Packages)
+        run: |
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
+            --username "${{ github.actor }}" \
+            --password "${{ secrets.GITHUB_TOKEN }}" \
+            --store-password-in-clear-text \
+            --name codehub-gh
+
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
+      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      - name: Configure NuGet (GitHub Packages)
+        run: |
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
+            --username "${{ github.actor }}" \
+            --password "${{ secrets.GITHUB_TOKEN }}" \
+            --store-password-in-clear-text \
+            --name codehub-gh
+
       - name: Checkout code
         uses: actions/checkout@v7
         with:
@@ -236,6 +266,16 @@ jobs:
           - runtime: win-arm64
             arch: arm64
     steps:
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
+      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      - name: Configure NuGet (GitHub Packages)
+        run: |
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
+            --username "${{ github.actor }}" \
+            --password "${{ secrets.GITHUB_TOKEN }}" \
+            --store-password-in-clear-text \
+            --name codehub-gh
+
       - name: Checkout code
         uses: actions/checkout@v7
         with:
@@ -299,6 +339,26 @@ jobs:
           - rid: osx-arm64
             dmg_arch: arm64
     steps:
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
+      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      - name: Configure NuGet (GitHub Packages)
+        run: |
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
+            --username "${{ github.actor }}" \
+            --password "${{ secrets.GITHUB_TOKEN }}" \
+            --store-password-in-clear-text \
+            --name codehub-gh
+
+      # 基座库 CodeHub-FluentUI 发布在 GitHub Packages；该 NuGet 源即使包是公开的
+      # 也要求认证（GitHub 不支持匿名拉取），因此每个会还原的作业都要先配好凭据。
+      - name: Configure NuGet (GitHub Packages)
+        run: |
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" \
+            --username "${{ github.actor }}" \
+            --password "${{ secrets.GITHUB_TOKEN }}" \
+            --store-password-in-clear-text \
+            --name codehub-gh
+
       - name: Checkout
         uses: actions/checkout@v7
         with:
