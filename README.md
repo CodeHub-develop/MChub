@@ -85,10 +85,10 @@
 
 环境变量清单见 [`[root]/.env.example`](.env.example)
 
-官网 [`[root]/web`](web) :
+官网 [`MChub.Web/site-src`](MChub.Web/site-src) :
 
 ```bash
-cd web
+cd MChub.Web/site-src
 npm i
 npm run dev
 ```
