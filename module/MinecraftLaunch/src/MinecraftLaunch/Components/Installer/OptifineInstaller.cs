@@ -230,6 +230,8 @@ public sealed class OptifineInstaller : InstallerBase {
         if (!optifineLibraryFile.Directory!.Exists)
             optifineLibraryFile.Directory.Create();
 
+        var errorOutputs = new List<string>();
+        var standardOutputs = new List<string>();
         using var process = Process.Start(
             new ProcessStartInfo(JavaPath) {
                 UseShellExecute = false,
@@ -249,10 +251,28 @@ public sealed class OptifineInstaller : InstallerBase {
                     ])
             }) ?? throw new InvalidOperationException("Unable to run the compilation process");
 
+        process.OutputDataReceived += (_, e) =>
+        {
+            if (!string.IsNullOrEmpty(e.Data)) standardOutputs.Add(e.Data);
+        };
+        process.ErrorDataReceived += (_, e) =>
+        {
+            if (!string.IsNullOrEmpty(e.Data)) errorOutputs.Add(e.Data);
+        };
+
         process.BeginErrorReadLine();
         process.BeginOutputReadLine();
 
         await process.WaitForExitAsync(cancellationToken);
+        process.CancelOutputRead();
+        process.CancelErrorRead();
+        if (process.ExitCode != 0)
+        {
+            var diagnostic = string.Join("\n", errorOutputs.Concat(standardOutputs)).Trim();
+            throw new InvalidOperationException(
+                $"OptiFine 安装进程以退出码 {process.ExitCode} 失败。" +
+                (diagnostic.Length > 0 ? $"\nJava 输出:\n{diagnostic}" : string.Empty));
+        }
         ReportProgress(InstallStep.RunInstallProcessor, 1.0d, TaskStatus.Running, 1, 1);
     }
 

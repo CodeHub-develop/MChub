@@ -381,21 +381,31 @@ public sealed class ForgeInstaller : InstallerBase {
             };
             foreach (var argument in args)
                 startInfo.ArgumentList.Add(argument);
+            var errorOutputs = new List<string>();
+            var standardOutputs = new List<string>();
             using var process = Process.Start(startInfo) ?? throw new Exception("Failed to start Java");
-//            TODO Maybe it is Xilu's Todo event 
-//            List<string> _errorOutputs = [];
-//
-//            process.ErrorDataReceived += (_, arg) => {
-//                if (arg.Data is not null && !string.IsNullOrEmpty(arg.Data))
-//                    _errorOutputs.Add(arg.Data);
-//            };
+            process.OutputDataReceived += (_, e) =>
+            {
+                if (!string.IsNullOrEmpty(e.Data)) standardOutputs.Add(e.Data);
+            };
+            process.ErrorDataReceived += (_, e) =>
+            {
+                if (!string.IsNullOrEmpty(e.Data)) errorOutputs.Add(e.Data);
+            };
 
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
 
             await process.WaitForExitAsync(cancellationToken);
+            process.CancelOutputRead();
+            process.CancelErrorRead();
             if (process.ExitCode != 0)
-                throw new InvalidOperationException($"Forge installation processor exited with code {process.ExitCode}.");
+            {
+                var diagnostic = string.Join("\n", errorOutputs.Concat(standardOutputs)).Trim();
+                throw new InvalidOperationException(
+                    $"Forge 安装处理器以退出码 {process.ExitCode} 失败。" +
+                    (diagnostic.Length > 0 ? $"\nJava 输出:\n{diagnostic}" : string.Empty));
+            }
 
             var missingOutput = processor.Outputs.Keys.FirstOrDefault(path => !File.Exists(path));
             if (missingOutput is not null)

@@ -49,7 +49,7 @@ public static class MinecraftInstallationTasks
 
     public static bool RequiresJavaRuntime(IEnumerable<LoaderKind> kinds)
     {
-        return kinds.Any(kind => kind is LoaderKind.Forge or LoaderKind.NeoForge or LoaderKind.OptiFine);
+        return kinds.Any(kind => kind is LoaderKind.Forge or LoaderKind.NeoForge or LoaderKind.Quilt or LoaderKind.OptiFine);
     }
 
     private static async Task RunInstallationAsync(TaskExecutionContext context, VersionManifestEntry vanilla,
