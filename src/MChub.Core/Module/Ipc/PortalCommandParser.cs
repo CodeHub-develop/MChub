@@ -12,7 +12,7 @@ public enum MChubCliParseStatus
 
 public static class MChubCommandParser
 {
-    public const string UriScheme = "sl";
+    public const string UriScheme = "mchub";
 
     public static MChubCliParseStatus Parse(string[] args, out MChubCommand? command, out string? error)
     {

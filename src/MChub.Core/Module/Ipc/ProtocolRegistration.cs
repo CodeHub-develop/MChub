@@ -12,10 +12,10 @@ public static class ProtocolRegistration
         """
         @echo off
         chcp 65001 >nul
-        reg add "HKEY_CLASSES_ROOT\sl" /f /ve /d "URL:MChub Protocol" || goto :fail
-        reg add "HKEY_CLASSES_ROOT\sl" /f /v "URL Protocol" /d "" || goto :fail
-        reg add "HKEY_CLASSES_ROOT\sl\DefaultIcon" /f /ve /d "\"__MCHUB_EXE__\",0" || goto :fail
-        reg add "HKEY_CLASSES_ROOT\sl\shell\open\command" /f /ve /d "\"__MCHUB_EXE__\" \"%%1\"" || goto :fail
+        reg add "HKEY_CLASSES_ROOT\mchub" /f /ve /d "URL:MChub Protocol" || goto :fail
+        reg add "HKEY_CLASSES_ROOT\mchub" /f /v "URL Protocol" /d "" || goto :fail
+        reg add "HKEY_CLASSES_ROOT\mchub\DefaultIcon" /f /ve /d "\"__MCHUB_EXE__\",0" || goto :fail
+        reg add "HKEY_CLASSES_ROOT\mchub\shell\open\command" /f /ve /d "\"__MCHUB_EXE__\" \"%%1\"" || goto :fail
         exit /b 0
         :fail
         exit /b 1
@@ -30,7 +30,7 @@ public static class ProtocolRegistration
         Exec=__MCHUB_EXE__ %u
         Terminal=false
         NoDisplay=true
-        MimeType=x-scheme-handler/sl;
+        MimeType=x-scheme-handler/mchub;
         """;
 
     public static bool IsSupported => OperatingSystem.IsWindows() || OperatingSystem.IsLinux();
@@ -108,7 +108,7 @@ public static class ProtocolRegistration
             LinuxDesktopTemplate.Replace("__MCHUB_EXE__", EscapeDesktopExecArgument(executablePath)) + "\n");
         Logger.Info(string.Format(LogLanguageManager.Instance.ipc_desktopHandlerWritten.CurrentValue(), desktopFilePath));
 
-        await RunProcessAsync("xdg-mime", ["default", desktopFileName, "x-scheme-handler/sl"], true);
+        await RunProcessAsync("xdg-mime", ["default", desktopFileName, "x-scheme-handler/mchub"], true);
 
         await RunProcessAsync("update-desktop-database", [applicationsFolder], false);
     }

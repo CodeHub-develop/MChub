@@ -1,6 +1,6 @@
-# 命令行与 sl:// 协议
+# 命令行与 mchub:// 协议
 
-MChub 支持通过命令行参数或 `sl://` 链接调用启动器内的安装与启动功能。两种入口的参数一一对应，解析后执行的是同一套逻辑。
+MChub 支持通过命令行参数或 `mchub://` 链接调用启动器内的安装与启动功能。两种入口的参数一一对应，解析后执行的是同一套逻辑。
 
 如果 MChub 已在运行，命令会转发给正在运行的实例执行；否则会先启动 MChub，界面加载完成后再执行。安装进度显示在任务抽屉中，完成或失败会弹出通知。
 
@@ -62,19 +62,19 @@ MChub.Desktop.exe launch "1.20.1-forge" --folder "D:\Minecraft\.minecraft" --ser
 与上面命令行等价的链接：
 
 ```
-sl://install/vanilla?version=1.21.8
-sl://install/loader?version=1.21.8&loader=fabric
-sl://install/loader?version=1.20.1&loader=forge@47.2.0&folder=D%3A%5CMinecraft%5C.minecraft&id=1.20.1-forge
-sl://install/modpack?source=https%3A%2F%2Fcdn.modrinth.com%2Fdata%2F1KVo5zza%2F...
-sl://install/modpack?source=Fabulously%20Optimized
-sl://install/modpack?source=fabulously-optimized&from=modrinth&version=14.0.0-beta.2
-sl://install/modpack?source=715572&from=curseforge&file=6985843
-sl://launch?id=1.20.1-forge&folder=D%3A%5CMinecraft%5C.minecraft
-sl://launch?id=1.20.1-forge&folder=D%3A%5CMinecraft%5C.minecraft&world=New%20World
-sl://launch?id=1.20.1-forge&folder=D%3A%5CMinecraft%5C.minecraft&server=play.example.com&port=25565
+mchub://install/vanilla?version=1.21.8
+mchub://install/loader?version=1.21.8&loader=fabric
+mchub://install/loader?version=1.20.1&loader=forge@47.2.0&folder=D%3A%5CMinecraft%5C.minecraft&id=1.20.1-forge
+mchub://install/modpack?source=https%3A%2F%2Fcdn.modrinth.com%2Fdata%2F1KVo5zza%2F...
+mchub://install/modpack?source=Fabulously%20Optimized
+mchub://install/modpack?source=fabulously-optimized&from=modrinth&version=14.0.0-beta.2
+mchub://install/modpack?source=715572&from=curseforge&file=6985843
+mchub://launch?id=1.20.1-forge&folder=D%3A%5CMinecraft%5C.minecraft
+mchub://launch?id=1.20.1-forge&folder=D%3A%5CMinecraft%5C.minecraft&world=New%20World
+mchub://launch?id=1.20.1-forge&folder=D%3A%5CMinecraft%5C.minecraft&server=play.example.com&port=25565
 ```
 
-`sl://launch/<实例ID>` 这种把实例 ID 放在路径里的写法也被接受。
+`mchub://launch/<实例ID>` 这种把实例 ID 放在路径里的写法也被接受。
 
 ## 格式说明
 
@@ -83,17 +83,17 @@ sl://launch?id=1.20.1-forge&folder=D%3A%5CMinecraft%5C.minecraft&server=play.exa
 URI 的路径部分对应命令行的动词和子命令，查询参数对应命令行选项：
 
 ```
-sl://<动词>/<子命令>?<参数>=<值>&<参数>=<值>
+mchub://<动词>/<子命令>?<参数>=<值>&<参数>=<值>
 ```
 
 | 命令行 | URI |
 | --- | --- |
-| `install vanilla 1.21.8` | `sl://install/vanilla?version=1.21.8` |
-| `install loader 1.21.8 --loader fabric` | `sl://install/loader?version=1.21.8&loader=fabric` |
-| `install modpack <来源>` | `sl://install/modpack?source=<来源>` |
-| `launch <实例ID>` | `sl://launch?id=<实例ID>` |
-| `launch <实例ID> --world <世界文件夹>` | `sl://launch?id=<实例ID>&world=<世界文件夹>` |
-| `launch <实例ID> --server <地址> [--port <端口>]` | `sl://launch?id=<实例ID>&server=<地址>&port=<端口>` |
+| `install vanilla 1.21.8` | `mchub://install/vanilla?version=1.21.8` |
+| `install loader 1.21.8 --loader fabric` | `mchub://install/loader?version=1.21.8&loader=fabric` |
+| `install modpack <来源>` | `mchub://install/modpack?source=<来源>` |
+| `launch <实例ID>` | `mchub://launch?id=<实例ID>` |
+| `launch <实例ID> --world <世界文件夹>` | `mchub://launch?id=<实例ID>&world=<世界文件夹>` |
+| `launch <实例ID> --server <地址> [--port <端口>]` | `mchub://launch?id=<实例ID>&server=<地址>&port=<端口>` |
 
 ### 参数
 
