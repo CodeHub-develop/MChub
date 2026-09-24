@@ -96,7 +96,7 @@ export const site = {
     { title: { zh: '文件整理', en: 'File organization' }, desc: { zh: '集中查看游戏日志、存档、截图、设置与资源文件，模组、光影、存档一目了然。', en: 'All your logs, worlds, screenshots, settings and resources in one place — mods, shaders and worlds at a glance.' } },
     { title: { zh: '投影材料', en: 'Litematica materials' }, desc: { zh: '打开 .litematic 与 .nbt 文件预览结构，统计并导出所需的材料清单。', en: 'Preview .litematic and .nbt structures, tally and export the required material list.' } },
     { title: { zh: '基岩版支持', en: 'Bedrock support' }, desc: { zh: 'Windows 支持 GDK、UWP 本体的下载安装启动，以及 DLL 模组、预加载和可配置鼠标锁；Linux 走 Proton 启动。', en: 'On Windows: install & launch GDK/UWP packages, plus DLL mods, preloading and configurable mouse lock; on Linux it runs via Proton.' } },
-    { title: { zh: '命令行调用', en: 'CLI' }, desc: { zh: '支持命令行参数与浏览器 sl:// 链接调用安装与启动，脚本化一切。', en: 'Install and launch via command-line args or browser sl:// links — script everything.' } },
+    { title: { zh: '命令行调用', en: 'CLI' }, desc: { zh: '支持命令行参数与浏览器 mchub:// 链接调用安装与启动，脚本化一切。', en: 'Install and launch via command-line args or browser mchub:// links — script everything.' } },
   ],
 
   // 下载平台（沿用原官网数据，资产直链走 GitHub Releases）
