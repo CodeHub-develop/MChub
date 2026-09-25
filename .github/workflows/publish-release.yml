@@ -388,8 +388,34 @@ jobs:
       - name: Build macOS App
         run: |
           cd ./src/MChub.Desktop
-          dotnet restore -r ${{ matrix.rid }}
-          dotnet msbuild -t:BundleApp -p:RuntimeIdentifier=${{ matrix.rid }} -property:Configuration=Release -p:SelfContained=true
+          # CodeNet x64 SDK 在 Rosetta 下交叉构建 osx-arm64 会概率性死锁：
+          # 轻则卡在 restore 的 "Determining projects to restore..."，
+          # 重则 BundleApp 编译阶段静默挂起直到 GitHub 6h 超时（实测多次）。
+          # 给每个 dotnet 调用套 600s 超时，挂起即 kill 重试，最多 3 次。
+          run_with_timeout() {
+            local label="$1"; shift
+            for attempt in 1 2 3; do
+              echo "== $label attempt $attempt =="
+              dotnet "$@" &
+              local pid=$!
+              ( sleep 600; kill -9 "$pid" 2>/dev/null ) &
+              local killer=$!
+              wait "$pid"
+              local rc=$?
+              kill "$killer" 2>/dev/null || true
+              if [ "$rc" -eq 0 ]; then
+                echo "== $label OK =="
+                return 0
+              fi
+              echo "== $label failed (rc=$rc), retrying =="
+              pkill -9 dotnet 2>/dev/null || true
+              sleep 5
+            done
+            echo "== $label gave up after 3 attempts =="
+            return 1
+          }
+          run_with_timeout restore restore -r ${{ matrix.rid }}
+          run_with_timeout bundle msbuild -t:BundleApp -p:RuntimeIdentifier=${{ matrix.rid }} -property:Configuration=Release -p:SelfContained=true
 
       # DotNet.Bundle 不支持 CFBundleURLTypes，mchub:// 协议声明在打包后写入 Info.plist
       - name: Declare mchub URL Scheme
