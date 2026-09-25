@@ -130,11 +130,9 @@ jobs:
             runtime: linux-arm64
             output: MChub.linux.arm64.deb
             runs_on: ubuntu-22.04-arm
-          - kind: rpm
-            package_type: rpm
-            runtime: linux-arm64
-            output: MChub.linux.arm64.rpm
-            runs_on: ubuntu-22.04-arm
+          # rpm arm64 skipped: PupNet 生成的 rpm spec 在 arm64 宿主上仍报
+          # "No compatible architectures found for build"（x64/arm64 宿主均复现），
+          # 属 PupNet 对 arm64 rpm 的生成缺陷。arm64 Linux 用户请用 deb 或 AppImage。
     steps:
       # 基座库 CodeHub-FluentUI 发布在 GitHub Packages。该源即使包是公开的也要求认证
       # （实测匿名请求服务索引与包下载均 401），所以每个会还原的作业都要先配好凭据。
