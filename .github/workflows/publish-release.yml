@@ -89,7 +89,10 @@ jobs:
           fi
 
   linux-package:
-    runs-on: ubuntu-22.04
+    # x64 走 x86_64 runner；arm64 走原生 arm64 runner。
+    # rpm 的 rpmbuild 无法在 x86_64 宿主上交叉编译 arm64（No compatible architectures found for build），
+    # 所以 arm64 rpm 必须放在 arm64 runner 上构建（公开仓库可用 ubuntu-*-arm）。
+    runs-on: ${{ matrix.runs_on }}
     needs: prepare
     env:
       CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
@@ -106,26 +109,32 @@ jobs:
             package_type: appimage
             runtime: linux-x64
             output: MChub.linux.x64.AppImage
+            runs_on: ubuntu-22.04
           - kind: deb
             package_type: deb
             runtime: linux-x64
             output: MChub.linux.x64.deb
+            runs_on: ubuntu-22.04
           - kind: rpm
             package_type: rpm
             runtime: linux-x64
             output: MChub.linux.x64.rpm
+            runs_on: ubuntu-22.04
           - kind: appimage
             package_type: appimage
             runtime: linux-arm64
             output: MChub.linux.arm64.AppImage
+            runs_on: ubuntu-22.04-arm
           - kind: deb
             package_type: deb
             runtime: linux-arm64
             output: MChub.linux.arm64.deb
+            runs_on: ubuntu-22.04-arm
           - kind: rpm
             package_type: rpm
             runtime: linux-arm64
             output: MChub.linux.arm64.rpm
+            runs_on: ubuntu-22.04-arm
     steps:
       # 基座库 CodeHub-FluentUI 发布在 GitHub Packages。该源即使包是公开的也要求认证
       # （实测匿名请求服务索引与包下载均 401），所以每个会还原的作业都要先配好凭据。
