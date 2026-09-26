@@ -28,6 +28,8 @@
         <PackageReference Include="Avalonia"/>
         <PackageReference Include="Avalonia.Android"/>
         <PackageReference Include="Avalonia.Fonts.Inter"/>
+        <!-- OreUI 主题以 FluentTheme 为基础，Avalonia 12 需显式引用该主题包。 -->
+        <PackageReference Include="Avalonia.Themes.Fluent"/>
         <PackageReference Include="CodeHub-OreUI"/>
         <PackageReference Include="CommunityToolkit.Mvvm"/>
         <!-- 显式引用：{Translate} 标记扩展由 Irihi.Lingua.Core 注册进 Avalonia 默认 xmlns。 -->

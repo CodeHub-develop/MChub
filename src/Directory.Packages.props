@@ -15,6 +15,8 @@
     <PackageVersion Include="Avalonia.iOS" Version="12.0.4" />
     <PackageVersion Include="Avalonia.Browser" Version="12.0.4" />
     <PackageVersion Include="Avalonia.Android" Version="12.1.1" />
+    <!-- Avalonia 12 起 FluentTheme 不再随 Avalonia 元包下发，OreUI 主题依赖它作为基础模板，需显式引用。 -->
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="12.1.1" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.2" />
     <PackageVersion Include="DotNet.Bundle" Version="0.9.13" />
     <PackageVersion Include="CodeHub-FluentUI" Version="3.1.0-codehub.1" />
