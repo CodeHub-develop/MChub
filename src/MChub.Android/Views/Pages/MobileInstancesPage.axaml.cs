@@ -1,5 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+// Android 隐式全局 using 引入了 Android.Widget，Button 会与 Avalonia.Controls.Button 冲突。
+using Button = Avalonia.Controls.Button;
 using MChub.Core.Const;
 using MChub.Core.Minecraft.Classes;
 using MChub.Core.Minecraft.Instance;

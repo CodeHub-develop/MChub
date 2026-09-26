@@ -8,7 +8,8 @@ using MChub.Mobile.Views;
 
 namespace MChub.Mobile;
 
-public partial class MobileApp : Application
+// Android 隐式全局 using 引入了 Android.App，Application 会与 Avalonia.Application 冲突，故写全名。
+public partial class MobileApp : Avalonia.Application
 {
     public override void Initialize()
     {

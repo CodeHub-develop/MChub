@@ -1,6 +1,5 @@
 using Android.App;
 using Android.Content.PM;
-using Avalonia;
 using Avalonia.Android;
 
 namespace MChub.Mobile;
@@ -20,10 +19,4 @@ namespace MChub.Mobile;
         | ConfigChanges.Density
         | ConfigChanges.Keyboard
         | ConfigChanges.KeyboardHidden)]
-public class MainActivity : AvaloniaMainActivity<MobileApp>
-{
-    protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
-        => base.CustomizeAppBuilder(builder)
-            .WithInterFont()
-            .LogToTrace();
-}
+public class MainActivity : AvaloniaMainActivity;

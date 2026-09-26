@@ -13,7 +13,7 @@ public partial class MobileSettingsPage : UserControl
         InitializeComponent();
 
         LanguageValue.Text = LocalizationService.CurrentCulture.Name;
-        ThemeValue.Text = Application.Current?.RequestedThemeVariant?.ToString() ?? "-";
+        ThemeValue.Text = Avalonia.Application.Current?.RequestedThemeVariant?.ToString() ?? "-";
         StorageValue.Text = ConfigPath.UserDataRootPath;
 
         if (MobileBootstrap.CoreReady)

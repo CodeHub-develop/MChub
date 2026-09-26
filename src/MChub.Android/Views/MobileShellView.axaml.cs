@@ -1,6 +1,8 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using MChub.Mobile.Views.Pages;
+// Android 隐式全局 using 引入了 Android.Widget，Button 会与 Avalonia.Controls.Button 冲突。
+using Button = Avalonia.Controls.Button;
 
 namespace MChub.Mobile.Views;
 
@@ -24,7 +26,7 @@ public partial class MobileShellView : UserControl
     /// <summary>
     /// 用 OreUI 的 primary / secondary 变体表达选中态，不额外自造样式。
     /// </summary>
-    private void ShowPage(Control page, Button active, Button inactive)
+    private void ShowPage(Avalonia.Controls.Control page, Button active, Button inactive)
     {
         PageHost.Content = page;
         SetVariant(active, true);
