@@ -14,6 +14,10 @@
         <ApplicationVersion>1</ApplicationVersion>
         <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
         <AndroidPackageFormat>apk</AndroidPackageFormat>
+        <!-- 只出 64 位 ARM：必须在工程内声明而不是命令行 -p，
+             否则该全局属性会泄漏到 Core/Localization 等引用工程，
+             让它们的 obj 输出被塞进 android-arm64 子目录并触发 MSB3030 找不到 dll。 -->
+        <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
         <Description>MChub for Android</Description>
     </PropertyGroup>

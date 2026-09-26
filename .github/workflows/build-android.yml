@@ -52,7 +52,6 @@ jobs:
         run: >
           dotnet build ./src/MChub.Android/MChub.Android.csproj
           -c Release
-          -p:RuntimeIdentifiers=android-arm64
           -p:Version=0.0.0
 
       - name: Upload APK
