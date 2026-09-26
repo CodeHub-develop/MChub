@@ -1,0 +1,12 @@
+<Application
+    x:Class="MChub.Mobile.MobileApp"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    RequestedThemeVariant="Dark">
+    <Application.Styles>
+        <FluentTheme />
+        <!-- OreUI 主题必须位于 FluentTheme 之后，依赖其基础控件模板。 -->
+        <StyleInclude Source="avares://OreUI/Themes/OreUITheme.axaml" />
+        <StyleInclude Source="avares://Irihi.Lingua.Core/Themes/Generic.axaml" />
+    </Application.Styles>
+</Application>

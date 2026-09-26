@@ -1,0 +1,23 @@
+{
+  "mobile": {
+    "navInstances": "实例",
+    "navSettings": "设置",
+    "instancesTitle": "实例",
+    "instancesRefresh": "刷新",
+    "instancesEmpty": "未发现任何实例",
+    "instancesScanning": "正在扫描实例",
+    "instancesLaunch": "启动",
+    "instancesLaunchPending": "移动端启动能力尚未接入",
+    "instanceTypeJava": "Java 版",
+    "instanceTypeBedrock": "基岩版",
+    "settingsTitle": "设置",
+    "settingsLanguage": "语言",
+    "settingsTheme": "主题",
+    "settingsVersion": "版本",
+    "settingsRuntimeTitle": "移动端运行时",
+    "settingsRuntimePending": "未接入",
+    "settingsRuntimePlanned": "Java 运行时与图形翻译层将在后续版本接入",
+    "settingsStorageTitle": "数据目录",
+    "settingsStorageUnknown": "未就绪"
+  }
+}

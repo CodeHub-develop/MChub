@@ -1,0 +1,32 @@
+<UserControl
+    x:Class="MChub.Mobile.Views.MobileShellView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ore="using:OreUI.Controls"
+    xmlns:loc="using:MChub.Localization"
+    Background="#101010">
+    <Grid RowDefinitions="Auto,*,Auto">
+        <ore:OreHeader Grid.Row="0" Title="MChub" />
+
+        <ContentControl x:Name="PageHost" Grid.Row="1" />
+
+        <Border Grid.Row="2" Background="#1A1A1A" Padding="8" BorderThickness="0,1,0,0" BorderBrush="#2A2A2A">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                <Button
+                    x:Name="InstancesNavButton"
+                    Grid.Column="0"
+                    Classes="ore primary"
+                    HorizontalAlignment="Stretch"
+                    Content="{Translate {x:Static loc:MobileLanguageManager+Keys.mobile_navInstances}}"
+                    Click="InstancesNav_OnClick" />
+                <Button
+                    x:Name="SettingsNavButton"
+                    Grid.Column="1"
+                    Classes="ore secondary"
+                    HorizontalAlignment="Stretch"
+                    Content="{Translate {x:Static loc:MobileLanguageManager+Keys.mobile_navSettings}}"
+                    Click="SettingsNav_OnClick" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

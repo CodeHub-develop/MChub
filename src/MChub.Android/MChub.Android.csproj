@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0-android</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <!-- Android 命名空间与 Android.* 平台命名空间同名会造成解析歧义，这里把根命名空间独立出来。 -->
+        <RootNamespace>MChub.Mobile</RootNamespace>
+        <AssemblyName>MChub.Android</AssemblyName>
+        <!-- Android 8.0：libjvm.so 需要在应用私有目录中以 dlopen 方式加载。 -->
+        <SupportedOSPlatformVersion>26</SupportedOSPlatformVersion>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <ApplicationId>hub.code.MChub</ApplicationId>
+        <ApplicationVersion>1</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
+        <AndroidPackageFormat>apk</AndroidPackageFormat>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <Description>MChub for Android</Description>
+    </PropertyGroup>
+
+    <!-- 桌面端的 LINUX / MACOS 编译常量对移动端无意义；且 Android 上 OperatingSystem.IsLinux()
+         会返回 true，常量残留会把代码引进桌面 Linux 分支，这里显式剔除。 -->
+    <PropertyGroup>
+        <DefineConstants>$(DefineConstants.Replace('LINUX','').Replace('MACOS',''))</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia"/>
+        <PackageReference Include="Avalonia.Android"/>
+        <PackageReference Include="Avalonia.Fonts.Inter"/>
+        <PackageReference Include="CodeHub-OreUI"/>
+        <PackageReference Include="CommunityToolkit.Mvvm"/>
+        <!-- 显式引用：{Translate} 标记扩展由 Irihi.Lingua.Core 注册进 Avalonia 默认 xmlns。 -->
+        <PackageReference Include="Irihi.Lingua"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MChub.Core\MChub.Core.csproj"/>
+        <ProjectReference Include="..\MChub.Localization\MChub.Localization.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AndroidResource Include="..\..\assets\MChub.png" Link="Resources\drawable\mchub_icon.png"/>
+    </ItemGroup>
+
+</Project>

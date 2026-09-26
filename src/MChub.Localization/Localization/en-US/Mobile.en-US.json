@@ -1,0 +1,23 @@
+{
+  "mobile": {
+    "navInstances": "Instances",
+    "navSettings": "Settings",
+    "instancesTitle": "Instances",
+    "instancesRefresh": "Refresh",
+    "instancesEmpty": "No instances found",
+    "instancesScanning": "Scanning instances",
+    "instancesLaunch": "Launch",
+    "instancesLaunchPending": "Launching is not wired up on mobile yet",
+    "instanceTypeJava": "Java Edition",
+    "instanceTypeBedrock": "Bedrock Edition",
+    "settingsTitle": "Settings",
+    "settingsLanguage": "Language",
+    "settingsTheme": "Theme",
+    "settingsVersion": "Version",
+    "settingsRuntimeTitle": "Mobile runtime",
+    "settingsRuntimePending": "Not integrated",
+    "settingsRuntimePlanned": "The Java runtime and graphics translation layer arrive in a later build",
+    "settingsStorageTitle": "Data directory",
+    "settingsStorageUnknown": "Not ready"
+  }
+}

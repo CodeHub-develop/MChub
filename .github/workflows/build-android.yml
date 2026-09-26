@@ -1,0 +1,64 @@
+name: build/android
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/MChub.Android/**'
+      - 'src/MChub.Core/**'
+      - 'src/MChub.Localization/**'
+      - '.github/workflows/build-android.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  android-arm64:
+    runs-on: ubuntu-latest
+    env:
+      PRE_MC_KEY: ${{ secrets.PRE_MC_KEY }}
+      REL_MC_KEY: ${{ secrets.REL_MC_KEY }}
+      CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
+      MICROSOFT_CLIENT_ID: ${{ secrets.MICROSOFT_CLIENT_ID }}
+      LITTLESKIN_CLIENT_ID: ${{ secrets.LITTLESKIN_CLIENT_ID }}
+    steps:
+      # 基座库与其它私有包发布在 GitHub Packages，还原前必须先配好凭据。
+      - name: Configure NuGet (GitHub Packages)
+        shell: bash
+        run: |-
+          dotnet nuget add source "https://nuget.pkg.github.com/CodeHub-develop/index.json" --username "${{ github.actor }}" --password "${{ secrets.GITHUB_TOKEN }}" --store-password-in-clear-text --name codehub-gh
+
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: "recursive"
+
+      - name: Update Submodules
+        run: |
+          git submodule update --init --recursive
+          git submodule foreach --recursive 'branch=$(git config -f "$toplevel/.gitmodules" --get "submodule.$name.branch" || echo main); git fetch origin "$branch" && git checkout -B "$branch" "origin/$branch"'
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.400
+
+      - name: Install Android workload
+        run: dotnet workload install android
+
+      - name: Build Android (arm64)
+        run: >
+          dotnet build ./src/MChub.Android/MChub.Android.csproj
+          -c Release
+          -p:AndroidSupportedAbis=arm64-v8a
+          -p:Version=0.0.0
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: MChub.android-arm64
+          path: src/MChub.Android/bin/Release/net10.0-android/**/*.apk
+          if-no-files-found: warn
+          retention-days: 7
